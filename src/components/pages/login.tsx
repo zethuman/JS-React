@@ -41,6 +41,7 @@ export default function Login(props: Props): ReactElement{
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [isLogin, setIsLogin] = useState(false);
 
     const onSubmit = () => {
         let passwordValid = validatePassword(password)? password: ' ';
@@ -54,7 +55,10 @@ export default function Login(props: Props): ReactElement{
             if(oldUser['email'] == newUser['email'] && oldUser['password'] == newUser['password']){
                 console.log('I found');
                 handleUserChange(oldUser);
-                // handleIs('welcome')
+                // handleIs('welcome');
+            }
+            else{
+                alert("User not found");
             }
         })
     }
@@ -67,6 +71,11 @@ export default function Login(props: Props): ReactElement{
             <br/>
             <Link to={'/welcome'}><button className="btn btn-outline-secondary mar-top" onClick={onSubmit}>Login</button></Link>
             <Link to={'/'}><button className="btn btn-outline-secondary mar-top mar-left" >Cancel</button></Link>
+            <br/>
+            <h5>Don't have an account?</h5>
+            <Link to={'/sign-up'}><div>
+                <button className="btn btn-outline-secondary mar-top">Sign Up</button>
+                </div></Link>
         </form>
     )
 }

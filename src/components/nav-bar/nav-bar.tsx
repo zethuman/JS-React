@@ -59,24 +59,15 @@ function Navbar(): ReactElement {
                   Products
                 </Link>
               </li>
-              <button className='nav-item'>
+              <li className='nav-item'>
               <Link
                   to='/login'
-                  className='btn'
+                  className='nav-links'
                   onClick={closeMobileMenu}
                 >
                   Log in
                 </Link>
-              </button>
-              <button className='nav-item'>
-              <Link
-                  to='/sign-up'
-                  className='btn'
-                  onClick={closeMobileMenu}
-                >
-                  Sign Up
-                </Link>
-              </button>
+              </li>
             </ul>
             {/* {button && <Button buttonStyle='btn--outline' buttonSize=' '>Log in</Button>} */}
             {/* {button && <Button buttonStyle='btn--outline' buttonSize=' '>SIGN UP</Button>} */}
