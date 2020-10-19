@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link, Redirect } from 'react-router-dom';
 import { User } from '../../modules/user';
+import './login.css';
 
 interface Props{
     onChange: (user: User) => void;
@@ -75,15 +76,45 @@ export default function Registration(props: Props){
     }
 
     return(
-        <form className='mar'>
-            <input type="text" placeholder='Name' className= 'item-add-form d-flex' onChange={e => setName(e.target.value)}/>
-            <br/>
-            <input type="text" placeholder='Email' className= 'item-add-form d-flex' onChange={e => setEmail(e.target.value)}/>
-            <br/>
-            <input type="text" placeholder='Password' className= 'item-add-form d-flex' onChange={e => setPassword(e.target.value)}/>
-            <br/>
-            <button className="btn btn-outline-secondary mar-top" onClick = {onSubmit}>Sign Up</button>
-            <Link to={'/'}><button className="btn btn-outline-secondary mar-top mar-left" >Cancel</button></Link>
-        </form>
+        <div>
+            <div className="sidenav">
+                <div className="login-main-text">
+                    <h2>Application<br/> Login Page </h2>
+                    <p>Login or Sign Up from here to access.</p>
+                </div>
+            </div>
+            <div className="main">
+                <div className="col-md-6 col-sm-12">
+                    <div className="login-form">
+                        <form>
+                            <div className="form-group">
+                                <label>Name</label>
+                                <input type="text" placeholder='Name' className= 'form-control' onChange={e => setName(e.target.value)}/>
+                            </div>
+                            <div className="form-group">
+                                <label>Email</label>
+                                <input type="text" placeholder='Email' className= 'form-control' onChange={e => setEmail(e.target.value)}/>
+                            </div>
+                            <div className="form-group">
+                                <label>Password</label>
+                                <input type="text" placeholder='Password' className= 'form-control' onChange={e => setPassword(e.target.value)}/>
+                            </div>
+                            <button className="btn btn-black" onClick = {onSubmit}>Sign Up</button>
+                            <Link to={'/'}><button className="btn btn-secondary" >Cancel</button></Link>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        // <form className='mar'>
+        //     <input type="text" placeholder='Name' className= 'item-add-form d-flex' onChange={e => setName(e.target.value)}/>
+        //     <br/>
+        //     <input type="text" placeholder='Email' className= 'item-add-form d-flex' onChange={e => setEmail(e.target.value)}/>
+        //     <br/>
+        //     <input type="text" placeholder='Password' className= 'item-add-form d-flex' onChange={e => setPassword(e.target.value)}/>
+        //     <br/>
+        //     <button className="btn btn-outline-secondary mar-top" onClick = {onSubmit}>Sign Up</button>
+        //     <Link to={'/'}><button className="btn btn-outline-secondary mar-top mar-left" >Cancel</button></Link>
+        // </form>
     )
 }

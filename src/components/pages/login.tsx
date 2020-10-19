@@ -1,11 +1,13 @@
 import React, { ReactElement, useState } from 'react'
 import { Link, Redirect } from 'react-router-dom';
 import { User } from '../../modules/user';
+import './login.css';
 
 
 interface Props{
     initUser: User[];
     onUserChange: (newUser: User) => void;
+    onLoggedIn: (isLoggedIn: boolean) => void;
 }
 
 
@@ -14,6 +16,9 @@ export default function Login(props: Props): ReactElement{
     // const handleIs = (newIs: string) => {
     //     props.onIsChange(newIs);
     // }
+    const onLoggedIn= (isLoggedIn: boolean) => {
+        props.onLoggedIn(true);
+    }
 
     const handleUserChange = (newUser: User) => {
         props.onUserChange(newUser);
@@ -56,6 +61,7 @@ export default function Login(props: Props): ReactElement{
                 console.log('I found');
                 handleUserChange(oldUser);
                 // handleIs('welcome');
+                onLoggedIn(true);
             }
             else{
                 alert("User not found");
@@ -64,18 +70,38 @@ export default function Login(props: Props): ReactElement{
     }
 
     return(
-        <form className='mar'>
-            <input type="text" placeholder='Email' className= 'item-add-form d-flex' onChange={e => setEmail(e.target.value)}/>
-            <br/>
-            <input type="text" placeholder='Password' className= 'item-add-form d-flex' onChange={e => setPassword(e.target.value)}/>
-            <br/>
-            <Link to={'/welcome'}><button className="btn btn-outline-secondary mar-top" onClick={onSubmit}>Login</button></Link>
-            <Link to={'/'}><button className="btn btn-outline-secondary mar-top mar-left" >Cancel</button></Link>
-            <br/>
-            <h5>Don't have an account?</h5>
-            <Link to={'/sign-up'}><div>
-                <button className="btn btn-outline-secondary mar-top">Sign Up</button>
-                </div></Link>
-        </form>
+        <div>
+            <div className="sidenav">
+                <div className="login-main-text">
+                    <h2>Application<br/> Login Page </h2>
+                    <p>Login or Sign Up from here to access.</p>
+                </div>
+            </div>
+            <div className="main">
+                <div className="col-md-6 col-sm-12">
+                    <div className="login-form">
+                        <form>
+                            <div className="form-group">
+                                <label>Email</label>
+                                <input type="text" placeholder='Email' className= 'form-control' onChange={e => setEmail(e.target.value)}/>
+                            </div>
+                            <div className="form-group">
+                                <label>Password</label>
+                                <input type="text" placeholder='Password' className= 'form-control' onChange={e => setPassword(e.target.value)}/>
+                            </div>
+                            <Link to={'/'}><button className="btn btn-black" onClick={onSubmit}>Login</button></Link>
+                            <Link to={'/'}><button className="btn btn-secondary" >Cancel</button></Link>
+                            <br/>
+                            <br/>
+                            <h5>Don't have an account?</h5>
+                            <br/>
+                            <Link to={'/sign-up'}><div>
+                                <button className="btn btn-black">Sign Up</button>
+                                </div></Link>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     )
 }

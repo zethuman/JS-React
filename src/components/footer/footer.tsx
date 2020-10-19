@@ -19,7 +19,7 @@ export default function Footer({}: Props): ReactElement {
                 <div className="input-areas">
                     <form>
                         <input type="email" name="email" placeholder="Your Email" className="footer-input"/>
-                        <button >Subscribe</button>
+                        <button className="btn2">Subscribe</button>
                     </form>
                 </div>
             </section>
@@ -62,11 +62,11 @@ export default function Footer({}: Props): ReactElement {
         <div className='social-media-wrap'>
           <div className='footer-logo'>
             <Link to='/' className='social-logo'>
-              TRVL
+              WC
               <i className='fab fa-typo3' />
             </Link>
           </div>
-          <small className='website-rights'>TRVL © 2020</small>
+          <small className='website-rights'>WC © 2020</small>
           <div className='social-icons'>
             <Link
               className='social-icon-link facebook'

@@ -8,9 +8,9 @@ interface Props {
 
 export default function Products({}: Props): ReactElement {
     return (
-        <>
+        <div>
             <h1 className='products'>PRODUCTS</h1>
             <Cards />
-        </>
+        </div>
     )
 }
