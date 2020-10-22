@@ -3,6 +3,7 @@ import { Link, useRouteMatch } from 'react-router-dom'
 import { products } from '../../mock/products';
 import CategoriesDetailItem from './categories-detail-item';
 // import Category from '../../modules/categories'
+import '../cards/cards.css'
 
 interface Props {
 
@@ -18,7 +19,7 @@ export default function CategoriesDetail({}: Props): ReactElement {
 
       const elements = filteredElements.map((item: any) => {
       
-        const { src, product_id, text, label, description, category_id } = item;
+        const { product_id, text, label, src,  description, category_id } = item;
         
           return ( <li key = {category_id} className="list-group-item">
                       <CategoriesDetailItem src={src} product_id={product_id} text = {text} label={label} description={description} category_id={category_id}  />

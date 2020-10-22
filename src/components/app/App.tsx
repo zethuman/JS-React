@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { createContext } from 'react';
 import './App.css';
 import NavBar from '../nav-bar/nav-bar';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
@@ -10,11 +11,12 @@ import { User } from '../../modules/user';
 import Categories from '../pages/categories';
 import CategoriesDetail from '../categories-detail/categories-detail';
 import ProductDetails from '../products-detail/product-details';
+import {Context} from '../contexts/context'
 
 
-const initUsers: User[] = [];
+const initUsers: User[] = []
 
-function App() {
+export default function App() {
 
   const onChange = (user: User) => {
     setUser([...users, user]);
@@ -37,7 +39,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
-    <>
+    <><Context.Provider value={activeUser['name']}>
       <Router>
         <NavBar isLoggedIn={isLoggedIn} onLoggedOut={onLoggedOut} initUser={activeUser}/>
         <Switch>
@@ -45,13 +47,14 @@ function App() {
           <Route exact path='/categories' component={Categories} />
           <Route exact path='/categories/:category_id' component={CategoriesDetail} />
           <Route exact path='/products'  component={Products} />
-          <Route exact path='/products/:product_id'  component={ProductDetails} />
+          <Route exact path='/products/:product_id' component={ProductDetails} />
           <Route exact path='/categories/products/:product_id' component={ProductDetails} />
           <Route path='/sign-up' render={(props) => (<SignUp {...props} onChange = {onChange} />)} />
           <Route path='/login' render={(props) => (<Login {...props} initUser={users}  onUserChange={onUserChange} onLoggedIn={onLoggedIn}/>)}  />
         </Switch>
       </Router>
-      <div>
+      </Context.Provider>
+      {/* <div>
       Users in database:
       {users.map((user, index) => (
                       <li className="list__item" key={index}>
@@ -69,9 +72,8 @@ function App() {
                           <div>{ user.password }</div>
                       </li>
                   ))}
-      </div>
+      </div> */}
     </>
   );
 }
 
-export default App;

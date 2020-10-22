@@ -79,6 +79,7 @@ export default function Registration(props: Props){
         }
         console.log(newUser);
         onChange(newUser);
+        sessionStorage.setItem('username', nameValid)
     }
 
     return(

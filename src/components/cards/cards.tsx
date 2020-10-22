@@ -15,13 +15,13 @@ export default function Cards({}: Props): ReactElement {
                     <ul className="cards__items">
                         <CardItem 
                         src='images/img-9.jpg'
-                        text='Travel is one of the greatest human freedoms ever.'
+                        text='Travel'
                         label='Adventure'
                         path='people/1'
                         />
                         <CardItem 
                         src='images/img-2.jpg'
-                        text='Bali sd,cbsdj csd ckjsdkc c skdbjckjdsncj sdjcsdkjb'
+                        text=''
                         label='Adventure'
                         path='2'
                         />

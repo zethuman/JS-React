@@ -66,8 +66,10 @@ export default function Login(props: Props): ReactElement{
             if(oldUser['email'] == newUser['email'] && oldUser['password'] == newUser['password']){
                 console.log('I found');
                 handleUserChange(oldUser);
-                // handleIs('welcome');
                 onLoggedIn(true);
+                sessionStorage.setItem('email', email);
+                sessionStorage.setItem('password', password);
+                sessionStorage.setItem("isLoggedIn", 'true');
             }
             else{
                 alert("User not found");

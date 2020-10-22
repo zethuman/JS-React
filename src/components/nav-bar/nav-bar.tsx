@@ -18,7 +18,10 @@ function Navbar({isLoggedIn, initUser, onLoggedOut}: Props): ReactElement {
     const [button, setButton] = useState(true);
   
     const handleClick = () => setClick(!click);
-    const handleLogOut = () => { onLoggedOut = false;
+    const handleLogOut = () => { 
+      onLoggedOut = false;
+      sessionStorage.removeItem('isLoggedIn')
+      sessionStorage.removeItem('username')
       console.log('logout')
       window.location.reload();
     }
@@ -73,7 +76,7 @@ function Navbar({isLoggedIn, initUser, onLoggedOut}: Props): ReactElement {
                   Products
                 </Link>
               </li>
-              {isLoggedIn ? (
+              {sessionStorage.getItem('isLoggedIn') === 'true' ? (
                   <li className='nav-item log1'>
                   <Link
                       to='/'
@@ -82,7 +85,7 @@ function Navbar({isLoggedIn, initUser, onLoggedOut}: Props): ReactElement {
                     >
                           <i className="fas fa-user log1"></i>
                           <br/>
-                          <h5 className="name log1">{initUser['name']}</h5> 
+                          <h5 className="name log1">{sessionStorage.getItem('username')}</h5> 
                           <h5 className="name log2">Log Out</h5>
                     </Link>
                   </li>

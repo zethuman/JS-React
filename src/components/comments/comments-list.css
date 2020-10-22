@@ -1,0 +1,71 @@
+.commentform {
+    margin-top: 50px;
+    margin-left: 25px;
+    margin-bottom: 50px;
+  }
+  
+  .comments{
+    margin-top: 20px;
+  }
+
+  .textarea{
+      padding-left: 5px;
+      padding-bottom: 25px;
+      margin-left: 30px;
+      max-width: 300px;
+      width: 100%;
+  }
+
+  h2{
+      margin-left: 25px;
+  }
+  
+  hr{
+    margin: 20px 0 20px 0;
+  }
+  
+  h2{
+    font-weight: 500;
+      font-family: 'Fira Sans',sans-serif;
+  }
+  
+  /* .comments p{
+    margin-bottom: 20px;
+  } */
+  
+  .little{
+    margin-right: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    color: teal;
+  }
+  
+  .little span{
+    padding-bottom: 20px;
+  }
+  
+  p{
+      color: #111;
+      font-size: 17px;
+      line-height: 1.46;
+      font-family: "-apple-system",BlinkMacSystemFont,Arial,sans-serif;
+      margin-top: 10px;
+      font-weight: 400;
+      font-style: normal;
+      text-rendering: optimizeLegibility;
+  }
+  
+  .github-btn{
+    background-color: #242424;
+    margin: 16px 0 16px 28px;
+    padding: 7px 32px;
+    height: 24%;
+    width: 20%;
+    color: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+    font: inherit;
+    display: inline-block;
+    transition: .2s;
+  }
+  
