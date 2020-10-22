@@ -1,20 +1,28 @@
-import React, { ReactElement, useState, useEffect } from 'react';
+import React, { ReactElement, useState, useEffect, Component } from 'react';
 import { Link } from 'react-router-dom';
 import './nav-bar.css';
 import '../app/App.css'
 import { User } from '../../modules/user';
+import { on } from 'process';
+import { ReactComponent } from '*.svg';
+import { render } from '@testing-library/react';
 
 interface Props{
   isLoggedIn: boolean;
   initUser: User;
+  onLoggedOut: any;
 }
 
-function Navbar({isLoggedIn, initUser}: Props): ReactElement {
+function Navbar({isLoggedIn, initUser, onLoggedOut}: Props): ReactElement {
     const [click, setClick] = useState(false);
     const [button, setButton] = useState(true);
   
     const handleClick = () => setClick(!click);
-    const closeMobileMenu = () => setClick(false);
+    const handleLogOut = () => { onLoggedOut = false;
+      console.log('logout')
+      window.location.reload();
+    }
+      const closeMobileMenu = () => setClick(false);
   
     const showButton = () => {
       if (window.innerWidth <= 960) {
@@ -66,14 +74,16 @@ function Navbar({isLoggedIn, initUser}: Props): ReactElement {
                 </Link>
               </li>
               {isLoggedIn ? (
-                  <li className='nav-item'>
+                  <li className='nav-item log1'>
                   <Link
                       to='/'
                       className='nav-links'
-                      onClick={closeMobileMenu}
+                      onClick={handleLogOut}
                     >
-                     <i className="fas fa-user"></i>
-                     <h5>{initUser['name']}</h5> 
+                          <i className="fas fa-user log1"></i>
+                          <br/>
+                          <h5 className="name log1">{initUser['name']}</h5> 
+                          <h5 className="name log2">Log Out</h5>
                     </Link>
                   </li>
               ): (<li className='nav-item'>

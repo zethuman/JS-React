@@ -204,3 +204,18 @@
     transition: all 0.3s ease-out;
 }
 
+.name{
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
+li .log2{
+  display: none;
+}
+
+li:hover .log1{
+  display: none;
+}
+li:hover .log2{
+  display: inline;
+}

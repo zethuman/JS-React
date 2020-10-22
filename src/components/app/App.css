@@ -6,7 +6,7 @@
 }
 
 .home,
-.services,
+.categories,
 .products,
 .sign-up {
   display: flex;
@@ -16,17 +16,17 @@
   font-size: 3rem;
 }
 
-.services {
-  background-image: url('/images/img-2.jpg');
+.categories {
+  background-image: url('/images/img-15.jpg');
   background-position: center;
-  background-size: cover;
+  background-size: fill;
   background-repeat: no-repeat;
   color: #fff;
   font-size: 100px;
 }
 
 .products {
-  background-image: url('/images/img-1.jpg');
+  background-image: url('/images/img-15.jpg');
   background-position: center;
   background-size: fill;
   background-repeat: no-repeat;

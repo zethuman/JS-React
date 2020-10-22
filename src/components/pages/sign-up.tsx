@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link, Redirect } from 'react-router-dom';
 import { User } from '../../modules/user';
 import './login.css';
@@ -9,6 +9,12 @@ interface Props{
 
 
 export default function Registration(props: Props){
+
+    const inputText = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        inputText.current?.focus()
+    }, [])
 
     const onChange = (user: User) => {
         props.onChange(user)
@@ -89,7 +95,7 @@ export default function Registration(props: Props){
                         <form>
                             <div className="form-group">
                                 <label>Name</label>
-                                <input type="text" placeholder='Name' className= 'form-control' onChange={e => setName(e.target.value)}/>
+                                <input type="text" placeholder='Name' className= 'form-control' ref={inputText} onChange={e => setName(e.target.value)}/>
                             </div>
                             <div className="form-group">
                                 <label>Email</label>

@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useRouteMatch } from 'react-router-dom'
 import '../cards/cards.css'
 
 interface Props {
@@ -10,6 +10,9 @@ interface Props {
 }
 
 export default function CardItem({src, text, label, path}: Props): ReactElement {
+
+    const match = useRouteMatch();
+
     return (
         <>
             <li className="cards__item">

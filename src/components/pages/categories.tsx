@@ -1,53 +1,39 @@
 import React, { ReactElement } from 'react'
+import { Link } from 'react-router-dom'
+import { category } from '../../mock/category'
 import '../app/App.css'
-import CardItem from '../card-item/card-item'
+import CategoryItem from '../category-item/category-item'
+
 
 interface Props {
     
 }
 
 export default function Categories({}: Props): ReactElement {
+    const elements = category.map((item: any) => {
+      
+        const { src, text,  label, category_id } = item;
+        
+          return ( <Link to={`categories/${category_id}`} key = {category_id} className="list-group-item">
+                      <CategoryItem src={src} text = {text} label={label} category_id={category_id}  />
+                  </Link>
+            );
+      })
+
     return (
+        <>
+        <div>
+            <h1  className="categories">CATEGORIES</h1>
+        </div>
         <div className='cards'>
-            <h1>Categories</h1>
             <div className="cards__container">
                 <div className="cards__wrapper">
                     <ul className="cards__items">
-                        <CardItem 
-                        src='images/img-9.jpg'
-                        text="People skdcbksd sdcbkjdhbc asjhdckjasbdc bcasdjhbcljsdbcla cdjsbcljhdsbcalj "
-                        label='People'
-                        path='people'
-                        />
-                        <CardItem 
-                        src='images/img-2.jpg'
-                        text='Things                                                                         '
-                        label='Things'
-                        path='things'
-                        />
-                    </ul>
-                    <ul className="cards__items">
-                        <CardItem 
-                        src='images/img-6.jpg'
-                        text='Adventure'
-                        label='Adventure'
-                        path='adventure'
-                        />
-                        <CardItem 
-                        src='images/img-3.jpg'
-                        text='Arts'
-                        label='Arts'
-                        path='arts'
-                        />
-                        <CardItem 
-                        src='images/img-4.jpg'
-                        text='Cars'
-                        label='cars'
-                        path='cars'
-                        />
+                        {elements}
                     </ul>
                 </div>
             </div>
         </div>
+        </>
     )
 }

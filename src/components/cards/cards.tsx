@@ -15,7 +15,7 @@ export default function Cards({}: Props): ReactElement {
                     <ul className="cards__items">
                         <CardItem 
                         src='images/img-9.jpg'
-                        text='Waterfall sd,cbsdj csd ckjsdkc c skdbjckjdsncj sdjcsdkjb'
+                        text='Travel is one of the greatest human freedoms ever.'
                         label='Adventure'
                         path='people/1'
                         />

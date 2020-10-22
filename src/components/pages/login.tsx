@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from 'react'
+import React, { ReactElement, useEffect, useRef, useState } from 'react'
 import { Link, Redirect } from 'react-router-dom';
 import { User } from '../../modules/user';
 import './login.css';
@@ -12,6 +12,12 @@ interface Props{
 
 
 export default function Login(props: Props): ReactElement{
+
+    const emailRef = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        emailRef.current?.focus()
+    }, [])
 
     // const handleIs = (newIs: string) => {
     //     props.onIsChange(newIs);
@@ -83,7 +89,7 @@ export default function Login(props: Props): ReactElement{
                         <form>
                             <div className="form-group">
                                 <label>Email</label>
-                                <input type="text" placeholder='Email' className= 'form-control' onChange={e => setEmail(e.target.value)}/>
+                                <input type="text" placeholder='Email' className= 'form-control' onChange={e => setEmail(e.target.value)} ref={emailRef}/>
                             </div>
                             <div className="form-group">
                                 <label>Password</label>

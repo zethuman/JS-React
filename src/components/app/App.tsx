@@ -8,6 +8,9 @@ import SignUp from '../pages/sign-up';
 import Login from '../pages/login';
 import { User } from '../../modules/user';
 import Categories from '../pages/categories';
+import CategoriesDetail from '../categories-detail/categories-detail';
+import ProductDetails from '../products-detail/product-details';
+
 
 const initUsers: User[] = [];
 
@@ -21,22 +24,29 @@ function App() {
     setIsLoggedIn(true)
   }
 
+  const onLoggedOut = () => {
+    setIsLoggedIn(false);
+  }
+
   const onUserChange = (newUser: User) => {
     setActiveUser(newUser);
   }
 
   const [users, setUser] = useState(initUsers);
-  const [activeUser, setActiveUser] = useState({  name: '', email: '', password: ''});
+  const [activeUser, setActiveUser] = useState({name: '', email: '', password: ''});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <>
       <Router>
-        <NavBar isLoggedIn={isLoggedIn} initUser={activeUser}/>
+        <NavBar isLoggedIn={isLoggedIn} onLoggedOut={onLoggedOut} initUser={activeUser}/>
         <Switch>
           <Route path='/' exact component={Home} />
-          <Route path='/categories' exact component={Categories} />
-          <Route path='/products' exact component={Products} />
+          <Route exact path='/categories' component={Categories} />
+          <Route exact path='/categories/:category_id' component={CategoriesDetail} />
+          <Route exact path='/products'  component={Products} />
+          <Route exact path='/products/:product_id'  component={ProductDetails} />
+          <Route exact path='/categories/products/:product_id' component={ProductDetails} />
           <Route path='/sign-up' render={(props) => (<SignUp {...props} onChange = {onChange} />)} />
           <Route path='/login' render={(props) => (<Login {...props} initUser={users}  onUserChange={onUserChange} onLoggedIn={onLoggedIn}/>)}  />
         </Switch>
