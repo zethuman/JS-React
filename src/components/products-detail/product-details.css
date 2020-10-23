@@ -44,3 +44,12 @@ a:hover{
     width: auto;
     text-decoration: none;
 }
+
+.rate{
+    margin-left: 10px;
+}
+
+.rating{
+    margin-left: 15px;
+    margin-right: 15px;
+}

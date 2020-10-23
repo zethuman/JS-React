@@ -1,17 +1,21 @@
-import React, { ReactElement, useState, useEffect, useRef } from 'react';
+import React, { ReactElement, useState, useEffect, useRef, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './nav-bar.css';
 import '../app/App.css'
 import { User } from '../../modules/user';
 import gsap from 'gsap'
+import { ContextIsLoggedIn } from '../contexts/context-is-logged-in';
+import { ContextUsername } from '../contexts/context-username';
 
 interface Props{
-  isLoggedIn: boolean;
   initUser: User;
   onLoggedOut: any;
 }
 
-function Navbar({isLoggedIn, onLoggedOut}: Props): ReactElement {
+function Navbar({onLoggedOut}: Props): ReactElement {
+
+  const isLoggedIn = useContext(ContextIsLoggedIn);
+  const username = useContext(ContextUsername);
 
   const headRef = useRef(null);
 
@@ -68,7 +72,7 @@ function Navbar({isLoggedIn, onLoggedOut}: Props): ReactElement {
                   Products
                 </Link>
               </li>
-              {sessionStorage.getItem('isLoggedIn') === 'true' ? (
+              {isLoggedIn === 'true' ? (
                   <li className='nav-item log1' ref={headRef}>
                   <Link
                       to='/'
@@ -77,7 +81,7 @@ function Navbar({isLoggedIn, onLoggedOut}: Props): ReactElement {
                     >
                           <i className="fas fa-user log1"></i>
                           <br/>
-                          <h5 className="name log1" ref={headRef}>{sessionStorage.getItem('username')}</h5> 
+                          <h5 className="name log1" ref={headRef}>{username}</h5> 
                           <h5 className="name log2" ref={headRef}>Log Out</h5>
                     </Link>
                   </li>

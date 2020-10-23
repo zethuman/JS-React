@@ -1,8 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react'
+import gsap from 'gsap';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { User } from '../../modules/user';
 import './login.css';
-import gsap from 'gsap'
+
 
 interface Props{
     onChange: (user: User) => void;
@@ -87,7 +88,7 @@ export default function Registration(props: Props){
         const newUser = {
             name: nameValid,
             email: emailValid, 
-            password: passwordValid
+            password: passwordValid,
         }
         console.log(newUser);
         onChange(newUser);

@@ -1,19 +1,20 @@
-import React, { ReactElement } from 'react'
+import React, { ReactElement, useContext } from 'react'
+import { ContextUsername } from '../contexts/context-username'
 import './comments-show.css'
 
 interface Props {
-    comment: string,
-    username: string
+    comment: string
 }
 
-export default function CommentsShow({comment, username}: Props): ReactElement {
+export default function CommentsShow({comment}: Props): ReactElement {
 
+    const username = useContext(ContextUsername)
 
     return (
         <>
             <hr/>
         <div className="comments">
-            <span className="little">{sessionStorage.getItem('username')}</span>
+            <span className="little">{username}</span>
             <p>{comment}</p>
         </div>
         </>

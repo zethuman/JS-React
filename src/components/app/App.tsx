@@ -11,6 +11,8 @@ import Categories from '../pages/categories';
 import CategoriesDetail from '../categories-detail/categories-detail';
 import ProductDetails from '../products-detail/product-details';
 import {Context} from '../contexts/context';
+import { ContextIsLoggedIn } from '../contexts/context-is-logged-in';
+import { ContextUsername } from '../contexts/context-username';
 
 
 const initUsers: User[] = []
@@ -43,19 +45,23 @@ export default function App() {
   return (
     <>
       <Context.Provider value={activeUser['name']}>
-      <Router>
-        <NavBar isLoggedIn={isLoggedIn} onLoggedOut={onLoggedOut} initUser={activeUser}/>
-        <Switch>
-          <Route path='/' exact component={Home} />
-          <Route exact path='/categories' component={Categories} />
-          <Route exact path='/categories/:category_id' component={CategoriesDetail} />
-          <Route exact path='/products'  component={Products} />
-          <Route exact path='/products/:product_id' component={ProductDetails} />
-          <Route exact path='/categories/products/:product_id' component={ProductDetails} />
-          <Route path='/sign-up' render={(props) => (<SignUp {...props} onChange = {onChange} />)} />
-          <Route path='/login' render={(props) => (<Login {...props} initUser={users}  onUserChange={onUserChange} onLoggedIn={onLoggedIn}/>)}  />
-        </Switch>
-      </Router>
+        <ContextIsLoggedIn.Provider value={sessionStorage.getItem('isLoggedIn') || '{}'}>
+        <ContextUsername.Provider value={sessionStorage.getItem('username') || '{}'}>
+          <Router>
+            <NavBar onLoggedOut={onLoggedOut} initUser={activeUser}/>
+            <Switch>
+              <Route path='/' exact component={Home} />
+              <Route exact path='/categories' component={Categories} />
+              <Route exact path='/categories/:category_id' component={CategoriesDetail} />
+              <Route exact path='/products'  component={Products} />
+              <Route exact path='/products/:product_id' component={ProductDetails} />
+              <Route exact path='/categories/products/:product_id' component={ProductDetails} />
+              <Route path='/sign-up' render={(props) => (<SignUp {...props} onChange = {onChange} />)} />
+              <Route path='/login' render={(props) => (<Login {...props} initUser={users}  onUserChange={onUserChange} onLoggedIn={onLoggedIn}/>)}  />
+            </Switch>
+          </Router>
+          </ContextUsername.Provider>
+        </ContextIsLoggedIn.Provider>
       </Context.Provider>
       {/* <div>
       Users in database:

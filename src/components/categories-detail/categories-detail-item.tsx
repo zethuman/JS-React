@@ -1,6 +1,5 @@
-import React, { ReactElement, useContext } from 'react';
+import React, { ReactElement} from 'react';
 import { Link } from 'react-router-dom';
-import { Context } from '../contexts/context';
 import './categories-detail.css';
 
 
@@ -15,7 +14,6 @@ interface Props {
 
 export default function CategoriesDetailItem({src, product_id, text, label, description}: Props): ReactElement {
 
-    const context = useContext(Context)
 
     return (
         <li className="card">

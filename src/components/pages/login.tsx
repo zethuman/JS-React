@@ -32,9 +32,7 @@ export default function Login(props: Props): ReactElement{
         emailRef.current?.focus()
     }, [])
 
-    // const handleIs = (newIs: string) => {
-    //     props.onIsChange(newIs);
-    // }
+    
     const onLoggedIn= (isLoggedIn: boolean) => {
         props.onLoggedIn(true);
     }
@@ -76,7 +74,6 @@ export default function Login(props: Props): ReactElement{
         console.log("Logged in")
         props.initUser.forEach(oldUser=>{
             if(oldUser['email'] === newUser['email'] && oldUser['password'] === newUser['password']){
-                console.log('I found');
                 handleUserChange(oldUser);
                 onLoggedIn(true);
                 sessionStorage.setItem('email', email);

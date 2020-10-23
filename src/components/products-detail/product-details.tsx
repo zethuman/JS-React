@@ -36,10 +36,10 @@ export default function ProductDetails(): ReactElement {
 
       const commentsElements = comments.map((item: any) => {
       
-        const {comment, username, product_id} = item;
+        const {comment,  product_id} = item;
         
           return ( <li key = {product_id} className="list-group-item">
-                      <CommentsShow comment={comment} username={username}  />
+                      <CommentsShow comment={comment}  />
                   </li>
             );
       })
