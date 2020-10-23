@@ -1,9 +1,7 @@
 import React, { ReactElement } from 'react'
 import { Link, useRouteMatch } from 'react-router-dom'
-import { products } from '../../mock/products';
+import { products } from '../../mock/products-mock';
 import CategoriesDetailItem from './categories-detail-item';
-// import Category from '../../modules/categories'
-import '../cards/cards.css'
 
 interface Props {
 

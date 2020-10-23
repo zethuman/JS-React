@@ -2,6 +2,7 @@ import React, { ReactElement, useEffect, useRef, useState } from 'react'
 import { Link, Redirect } from 'react-router-dom';
 import { User } from '../../modules/user';
 import './login.css';
+import gsap from 'gsap'
 
 
 interface Props{
@@ -12,6 +13,18 @@ interface Props{
 
 
 export default function Login(props: Props): ReactElement{
+
+    const headRef = useRef(null);
+    const textRef = useRef(null);
+
+    useEffect(() => {
+        gsap.from(headRef.current, {duration: 1, autoAlpha: 0, ease: 'none', delay: 0.1})
+    }, [headRef])
+
+    useEffect(() => {
+        gsap.from(textRef.current, {duration: 1, autoAlpha: 0, ease: 'none'})
+    }, [textRef])
+
 
     const emailRef = useRef<HTMLInputElement>(null);
 
@@ -78,11 +91,10 @@ export default function Login(props: Props): ReactElement{
     }
 
     return(
-        <div>
+        <div ref={headRef}>
             <div className="sidenav">
                 <div className="login-main-text">
                     <h2>Application<br/> Login Page </h2>
-                    <p>Login or Sign Up from here to access.</p>
                 </div>
             </div>
             <div className="main">

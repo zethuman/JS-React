@@ -1,8 +1,9 @@
-import React, { ReactElement, useState, useEffect, Component } from 'react';
+import React, { ReactElement, useState, useEffect, Component, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import './nav-bar.css';
 import '../app/App.css'
 import { User } from '../../modules/user';
+import gsap from 'gsap'
 import { on } from 'process';
 import { ReactComponent } from '*.svg';
 import { render } from '@testing-library/react';
@@ -14,6 +15,13 @@ interface Props{
 }
 
 function Navbar({isLoggedIn, initUser, onLoggedOut}: Props): ReactElement {
+
+  const headRef = useRef(null);
+
+  useEffect(() => {
+      gsap.from(headRef.current, {duration: 1, autoAlpha: 0, ease: 'none', delay: 0.1})
+  }, [headRef])
+
     const [click, setClick] = useState(false);
     const [button, setButton] = useState(true);
   
@@ -43,8 +51,8 @@ function Navbar({isLoggedIn, initUser, onLoggedOut}: Props): ReactElement {
   
     return (
       <>
-        <nav className='navbar'>
-          <div className='navbar-container'>
+        <nav className='navbar' >
+          <div className='navbar-container' ref={headRef}>
             <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
               WC
               <i className='fab fa-typo3' />
@@ -52,7 +60,7 @@ function Navbar({isLoggedIn, initUser, onLoggedOut}: Props): ReactElement {
             <div className='menu-icon' onClick={handleClick}>
               <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
             </div>
-            <ul className={click ? 'nav-menu active' : 'nav-menu'}>
+            <ul className={click ? 'nav-menu active' : 'nav-menu'} >
               <li className='nav-item'>
                 <Link to='/' className='nav-links' onClick={closeMobileMenu}>
                   Home
@@ -77,7 +85,7 @@ function Navbar({isLoggedIn, initUser, onLoggedOut}: Props): ReactElement {
                 </Link>
               </li>
               {sessionStorage.getItem('isLoggedIn') === 'true' ? (
-                  <li className='nav-item log1'>
+                  <li className='nav-item log1' ref={headRef}>
                   <Link
                       to='/'
                       className='nav-links'
@@ -85,8 +93,8 @@ function Navbar({isLoggedIn, initUser, onLoggedOut}: Props): ReactElement {
                     >
                           <i className="fas fa-user log1"></i>
                           <br/>
-                          <h5 className="name log1">{sessionStorage.getItem('username')}</h5> 
-                          <h5 className="name log2">Log Out</h5>
+                          <h5 className="name log1" ref={headRef}>{sessionStorage.getItem('username')}</h5> 
+                          <h5 className="name log2" ref={headRef}>Log Out</h5>
                     </Link>
                   </li>
               ): (<li className='nav-item'>

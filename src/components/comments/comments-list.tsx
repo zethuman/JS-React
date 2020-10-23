@@ -3,16 +3,17 @@ import { Comments } from '../../modules/comments';
 import './comments-list.css';
 import { Context } from '../contexts/context'
 import {v4 as uuid} from 'uuid'
+import { useRouteMatch } from 'react-router-dom';
 
 interface Props {
-    onChange: (comment: Comments) => void
+	onChange: (comment: Comments) => void
+	product_id: number
 }
 
 export default function CommentsList(props : Props): ReactElement {
 
 	const[comments, setComments] = useState('');
 	const commentRef = useRef<HTMLTextAreaElement>(null);
-
 	const context = useContext(Context);
 
     useEffect(() => {
@@ -28,11 +29,12 @@ export default function CommentsList(props : Props): ReactElement {
         const newComment = {
 			comment_id: uuid(),
 			comment: comments,
-			username: context
+			username: context,
+			product_id: props.product_id
         }
         console.log(newComment);
 		onChange(newComment);
-		sessionStorage.setItem('comments', comments)
+		sessionStorage.setItem('comments', JSON.stringify({'product_id': props.product_id, 'comments': comments, 'username': context}))
 	}
 	
 

@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Link, Redirect } from 'react-router-dom';
 import { User } from '../../modules/user';
 import './login.css';
+import gsap from 'gsap'
 
 interface Props{
     onChange: (user: User) => void;
@@ -9,6 +10,17 @@ interface Props{
 
 
 export default function Registration(props: Props){
+
+    const headRef = useRef(null);
+    const textRef = useRef(null);
+
+    useEffect(() => {
+        gsap.from(headRef.current, {duration: 1, autoAlpha: 0, ease: 'none', delay: 0.1})
+    }, [headRef])
+
+    useEffect(() => {
+        gsap.from(textRef.current, {duration: 1, autoAlpha: 0, ease: 'none'})
+    }, [textRef])
 
     const inputText = useRef<HTMLInputElement>(null);
 
@@ -83,11 +95,10 @@ export default function Registration(props: Props){
     }
 
     return(
-        <div>
+        <div ref={headRef}>
             <div className="sidenav">
-                <div className="login-main-text">
-                    <h2>Application<br/> Login Page </h2>
-                    <p>Login or Sign Up from here to access.</p>
+                <div className="login-main-text" ref={textRef}>
+                    <h2>Application<br/> Signup Page </h2>
                 </div>
             </div>
             <div className="main">

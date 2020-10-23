@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { createContext } from 'react';
 import './App.css';
 import NavBar from '../nav-bar/nav-bar';
@@ -11,7 +11,7 @@ import { User } from '../../modules/user';
 import Categories from '../pages/categories';
 import CategoriesDetail from '../categories-detail/categories-detail';
 import ProductDetails from '../products-detail/product-details';
-import {Context} from '../contexts/context'
+import {Context} from '../contexts/context';
 
 
 const initUsers: User[] = []
@@ -38,8 +38,12 @@ export default function App() {
   const [activeUser, setActiveUser] = useState({name: '', email: '', password: ''});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  /*Context*/
+  
+
   return (
-    <><Context.Provider value={activeUser['name']}>
+    <>
+      <Context.Provider value={activeUser['name']}>
       <Router>
         <NavBar isLoggedIn={isLoggedIn} onLoggedOut={onLoggedOut} initUser={activeUser}/>
         <Switch>

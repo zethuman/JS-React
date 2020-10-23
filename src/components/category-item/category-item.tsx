@@ -15,7 +15,7 @@ export default function CategoryItem({src, text, label, category_id}: Props): Re
 
     return (
         <>
-        <li className="cards__item">
+    
             <Link to={`categories/${category_id}`} className="cards__item__link">
                 <figure className='cards__item__pic-wrap' data-category={label}>
                     <img src={`../${src}`} alt="Travel Image" className="cards__item__img"/>
@@ -24,7 +24,7 @@ export default function CategoryItem({src, text, label, category_id}: Props): Re
                     <h5 className="cards__item__text">{text}</h5>
                 </div>
             </Link>
-        </li>   
+          
     </>
     )
 }

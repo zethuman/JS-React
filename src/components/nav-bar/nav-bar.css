@@ -209,8 +209,17 @@
   padding-top: 10px;
 }
 
+.name:hover{
+  transition: 3s;
+  opacity: 1;
+}
+
 li .log2{
   display: none;
+}
+
+li:hover{
+  transition: 3s;
 }
 
 li:hover .log1{

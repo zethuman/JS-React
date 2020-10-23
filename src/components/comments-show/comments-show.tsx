@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import React, { ReactElement, useState } from 'react'
 import { Comments } from '../../modules/comments'
 import './comments-show.css'
 
@@ -8,12 +8,14 @@ interface Props {
 }
 
 export default function CommentsShow({comment, username}: Props): ReactElement {
+
+
     return (
         <>
             <hr/>
         <div className="comments">
             <span className="little">{sessionStorage.getItem('username')}</span>
-            <p>{sessionStorage.getItem('comments')}</p>
+            <p>{comment}</p>
         </div>
         </>
     )

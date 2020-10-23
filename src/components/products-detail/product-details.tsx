@@ -1,10 +1,11 @@
 import { stringify } from 'querystring';
 import React, { ReactElement, useState } from 'react'
 import { Link, useRouteMatch } from 'react-router-dom'
-import { products } from '../../mock/products';
+import { products } from '../../mock/products-mock';
 import { Comments } from '../../modules/comments';
 import CommentsShow from '../comments-show/comments-show';
 import CommentsList from '../comments/comments-list';
+import { Context } from '../contexts/context';
 import ProductDetailsItem from './product-details-item';
 
 interface Props {
@@ -32,19 +33,17 @@ export default function ProductDetails({}: Props): ReactElement {
             );
       })
 
-      const [commentsShow, setCommentsShow] = useState('false')
       const [comments, setComments] = useState(initComments)
       
       const onChange = (comment: Comments) => {
             setComments([...comments, comment])
-            console.log(comment)
       }
 
       const commentsElements = comments.map((item: any) => {
       
-        const { comments_id, comment, username} = item;
+        const { comments_id, comment, username, product_id} = item;
         
-          return ( <li key = {comments_id} className="list-group-item">
+          return ( <li key = {product_id} className="list-group-item">
                       <CommentsShow comment={comment} username={username}  />
                   </li>
             );
@@ -66,7 +65,7 @@ export default function ProductDetails({}: Props): ReactElement {
             </div>
         </div>
         <div>
-            <CommentsList onChange={onChange}/> 
+            <CommentsList onChange={onChange} product_id={parseInt(match.params.product_id)}/> 
         </div>
 
         <div>

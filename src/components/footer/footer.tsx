@@ -34,7 +34,7 @@ export default function Footer({}: Props): ReactElement {
             <Link to='/'>Terms of Service</Link>
           </div>
           <div className='footer-link-items'>
-            <h2>Contact Us</h2>
+            <h2>Contact</h2>
             <Link to='/'>Contact</Link>
             <Link to='/'>Support</Link>
             <Link to='/'>Destinations</Link>
