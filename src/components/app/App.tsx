@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { createContext } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import NavBar from '../nav-bar/nav-bar';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'

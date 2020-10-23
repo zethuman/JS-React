@@ -1,5 +1,4 @@
-import React, { ReactElement, useState } from 'react'
-import { Comments } from '../../modules/comments'
+import React, { ReactElement } from 'react'
 import './comments-show.css'
 
 interface Props {

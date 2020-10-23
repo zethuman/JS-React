@@ -2,11 +2,7 @@ import React, { ReactElement } from 'react'
 import { Link } from 'react-router-dom'
 import './footer.css'
 
-interface Props {
-    
-}
-
-export default function Footer({}: Props): ReactElement {
+export default function Footer(): ReactElement {
     return (
         <div className='footer-container'>
             <section className="footer-subscription">

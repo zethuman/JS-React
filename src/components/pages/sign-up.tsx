@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { User } from '../../modules/user';
 import './login.css';
 import gsap from 'gsap'
@@ -33,7 +33,7 @@ export default function Registration(props: Props){
     }
 
     const validateName = (name: string) => {
-        if(name == ' '){
+        if(name === ' '){
             alert("Name can't be empty!")
             return false;
         }else {
@@ -42,7 +42,7 @@ export default function Registration(props: Props){
     }
 
     const validatePassword = (pass: string) => {
-        if(pass == ''){
+        if(pass === ''){
             alert("Password can't be empty!");
             return false;
         }
@@ -58,7 +58,7 @@ export default function Registration(props: Props){
     }
 
     const validateEmail = (email: string) => {
-        if(email == ''){
+        if(email === ''){
             alert("Email can't be empty");
             return false;
         }
@@ -95,7 +95,7 @@ export default function Registration(props: Props){
     }
 
     return(
-        <div ref={headRef}>
+        <div ref={headRef }>
             <div className="sidenav">
                 <div className="login-main-text" ref={textRef}>
                     <h2>Application<br/> Signup Page </h2>

@@ -1,22 +1,18 @@
 import React, { ReactElement, useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom';
 import { products } from '../../mock/products-mock';
 import '../../components/cards/cards.css'
 import ProductItem from '../product-item/product-item';
 import { gsap } from 'gsap'
 
-
-interface Props {
-    
-}
-
-export default function Products({}: Props): ReactElement {
+export default function Products(): ReactElement {
 
     const headRef = useRef(null);
     const textRef = useRef(null);
 
     useEffect(() => {
-        gsap.from(headRef.current, {duration: 1, autoAlpha: 0, ease: 'none', delay: 1})
+        gsap.from(headRef.current, {duration: 2, ease: "bounce.out", y: -154, stagger: {
+            amount: 0.15
+        }})
     }, [headRef])
 
     useEffect(() => {
@@ -35,20 +31,14 @@ export default function Products({}: Props): ReactElement {
                       <ProductItem src={src} product_id={product_id} text = {text} label={label} description={description} category_id={category_id}  />);
       })
 
-    return (
+      return (
         <>
-        <div>
-            <h1  className="products" ref={textRef}>Products</h1>
-        </div>
-        <div className='cards'>
-            <div className="cards__container">
-                <div className="cards__wrapper" ref={headRef}>
-                    <ul className="cards__items">
-                        {elements}
-                    </ul>
-                </div>
+            <div ref={headRef}>
+                <h1  className="products">Products</h1>
             </div>
-        </div>
+            <div id="product">
+                {elements}
+            </div>
         </>
     )
 }

@@ -1,6 +1,8 @@
-import React, { ReactElement } from 'react';
-import { Link, Redirect, useRouteMatch } from 'react-router-dom'
-import '../cards/cards.css'
+import React, { ReactElement, useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { Context } from '../contexts/context';
+import './categories-detail.css';
+
 
 interface Props {
     src: string,
@@ -11,25 +13,22 @@ interface Props {
     category_id: number,
 }
 
-export default function CategoriesDetailItem({src, product_id, text, label, description, category_id}: Props): ReactElement {
+export default function CategoriesDetailItem({src, product_id, text, label, description}: Props): ReactElement {
 
-    const match = useRouteMatch();
+    const context = useContext(Context)
 
     return (
-        <>
-        <li className="cards__item">
+        <li className="card">
             <Link to={`products/${product_id}`}>
-                <li className="cards__item__link">
-                    <figure className='cards__item__pic-wrap' data-category={label}>
-                        <img src={`../${src}`} alt="Travel Image" className="cards__item__img"/>
-                    </figure>
-                    <div className="cards__item__info">
-                        <h5 className="cards__item__text">{text}</h5>
-                        <h5 className="cards__item__text">{description}</h5>
-                    </div>
-                </li>
+                    <img src={`../${src}`} alt="Travel"/>
             </Link>
-        </li>   
-    </>
+            <div className="content">
+                <span>{label}</span>
+                <h3>
+                    <Link to={`products/${product_id}`}>{text}</Link>
+                </h3>
+                <p>{description}</p>
+            </div>
+        </li>
     )
 }

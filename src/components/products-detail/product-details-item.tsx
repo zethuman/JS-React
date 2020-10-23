@@ -1,7 +1,6 @@
 import React, { ReactElement } from 'react';
-import { Link, useRouteMatch } from 'react-router-dom'
 import '../cards/cards.css'
-import Comments from '../comments/comments-list';
+import './product-details.css'
 
 interface Props {
     src: string,
@@ -12,22 +11,29 @@ interface Props {
 
 export default function ProductDetailsItem({src, text, label, description}: Props): ReactElement {
 
-    const match = useRouteMatch();
-    console.log(src)
+    
 
     return (
         <>
-        <li className="cards__item">
-            <li className="cards__item__link">
-                <figure className='cards__item__pic-wrap' data-category={label}>
-                    <img src={`../../${src}`} alt="Lol" className="cards__item__img"/>
-                </figure>
-                <div className="cards__item__info">
-                    <h5 className="cards__item__text">{text}</h5>
-                    <h5 className="cards__item__text">{description}</h5>
+            <div className="details">
+                <img src={`../../${src}`} alt="Travel"/>
+                <div className="box">
+                    <div className="row">
+                        <h2>{text}</h2>
+                    </div>
+                    <p>{description}</p>
+                    <div className='download'>
+                        <a href={`../../${src}`} download>
+                            <p>Download <i className="fas fa-download"/> </p>
+                        </a>
+                    </div>
+                    <div>
+                    <i className="far fa-thumbs-up" ></i>
+                    
+                    <i className="far fa-thumbs-down"></i>
+                    </div>
                 </div>
-            </li>
-        </li>
-    </>
+            </div>
+        </>
     )
 }

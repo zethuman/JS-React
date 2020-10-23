@@ -3,7 +3,7 @@ import { Comments } from '../../modules/comments';
 import './comments-list.css';
 import { Context } from '../contexts/context'
 import {v4 as uuid} from 'uuid'
-import { useRouteMatch } from 'react-router-dom';
+
 
 interface Props {
 	onChange: (comment: Comments) => void
@@ -14,6 +14,7 @@ export default function CommentsList(props : Props): ReactElement {
 
 	const[comments, setComments] = useState('');
 	const commentRef = useRef<HTMLTextAreaElement>(null);
+	
 	const context = useContext(Context);
 
     useEffect(() => {

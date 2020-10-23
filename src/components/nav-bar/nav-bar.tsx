@@ -1,12 +1,9 @@
-import React, { ReactElement, useState, useEffect, Component, useRef } from 'react';
+import React, { ReactElement, useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import './nav-bar.css';
 import '../app/App.css'
 import { User } from '../../modules/user';
 import gsap from 'gsap'
-import { on } from 'process';
-import { ReactComponent } from '*.svg';
-import { render } from '@testing-library/react';
 
 interface Props{
   isLoggedIn: boolean;
@@ -14,7 +11,7 @@ interface Props{
   onLoggedOut: any;
 }
 
-function Navbar({isLoggedIn, initUser, onLoggedOut}: Props): ReactElement {
+function Navbar({isLoggedIn, onLoggedOut}: Props): ReactElement {
 
   const headRef = useRef(null);
 
@@ -23,7 +20,6 @@ function Navbar({isLoggedIn, initUser, onLoggedOut}: Props): ReactElement {
   }, [headRef])
 
     const [click, setClick] = useState(false);
-    const [button, setButton] = useState(true);
   
     const handleClick = () => setClick(!click);
     const handleLogOut = () => { 
@@ -35,20 +31,8 @@ function Navbar({isLoggedIn, initUser, onLoggedOut}: Props): ReactElement {
     }
       const closeMobileMenu = () => setClick(false);
   
-    const showButton = () => {
-      if (window.innerWidth <= 960) {
-        setButton(false);
-      } else {
-        setButton(true);
-      }
-    };
-  
-    window.addEventListener('resize', showButton);
-
-    useEffect(()=>{
-        showButton()
-    }, [])
-  
+    
+   
     return (
       <>
         <nav className='navbar' >

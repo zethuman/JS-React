@@ -1,13 +1,11 @@
-import React, { ReactElement } from 'react'
-import { Link, useRouteMatch } from 'react-router-dom'
+import React, { ReactElement } from 'react';
+import { useRouteMatch } from 'react-router-dom';
 import { products } from '../../mock/products-mock';
 import CategoriesDetailItem from './categories-detail-item';
+import './categories-detail.css';
 
-interface Props {
 
-}
-
-export default function CategoriesDetail({}: Props): ReactElement {
+export default function CategoriesDetail(): ReactElement {
 
     const match = useRouteMatch<{category_id: string}>();
 
@@ -19,27 +17,20 @@ export default function CategoriesDetail({}: Props): ReactElement {
       
         const { product_id, text, label, src,  description, category_id } = item;
         
-          return ( <li key = {category_id} className="list-group-item">
+          return (
                       <CategoriesDetailItem src={src} product_id={product_id} text = {text} label={label} description={description} category_id={category_id}  />
-                  </li>
             );
       })
 
 
     return (
         <>
-        <div>
-            <h1  className="categories">Products</h1>
-        </div>
-        <div className='cards'>
-            <div className="cards__container">
-                <div className="cards__wrapper">
-                    <ul className="cards__items">
-                        {elements}
-                    </ul>
-                </div>
+            <div>
+                <h1  className="products">Products</h1>
             </div>
-        </div>
+            <div id="product">
+                {elements}
+            </div>
         </>
     )
 }

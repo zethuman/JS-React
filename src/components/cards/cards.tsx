@@ -2,11 +2,8 @@ import React, { ReactElement } from 'react'
 import CardItem from '../card-item/card-item'
 import './cards.css'
 
-interface Props {
-    
-}
 
-export default function Cards({}: Props): ReactElement {
+export default function Cards(): ReactElement {
     return (
         <div className='cards'>
             <h1>Check out these EPIC Destinations!</h1>
@@ -15,35 +12,33 @@ export default function Cards({}: Props): ReactElement {
                     <ul className="cards__items">
                         <CardItem 
                         src='images/img-9.jpg'
-                        text='Travel'
-                        label='Adventure'
-                        path='people/1'
+                        text='Waterfalls'
+                        label='mortals'
                         />
                         <CardItem 
                         src='images/img-2.jpg'
-                        text=''
-                        label='Adventure'
-                        path='2'
+                        text='Beaches'
+                        label='adventure'
+                  
                         />
                     </ul>
-                    <ul className="cards__items">
+                    <ul className="cards__items small">
                         <CardItem 
                         src='images/img-6.jpg'
-                        text='Waterfall sd,cbsdj csd ckjsdkc c skdbjckjdsncj sdjcsdkjb'
-                        label='Adventure'
-                        path='3'
+                        text='Cultures'
+                        label='culture'
+                   
                         />
                         <CardItem 
                         src='images/img-3.jpg'
-                        text='Bali sd,cbsdj csd ckjsdkc c skdbjckjdsncj sdjcsdkjb'
-                        label='Adventure'
-                        path='4'
+                        text='Seas'
+                        label='adventure'
+                      
                         />
                         <CardItem 
                         src='images/img-4.jpg'
-                        text='Bali sd,cbsdj csd ckjsdkc c skdbjckjdsncj sdjcsdkjb'
-                        label='Adventure'
-                        path='5'
+                        text='Islands'
+                        label='adventure'
                         />
                     </ul>
                 </div>

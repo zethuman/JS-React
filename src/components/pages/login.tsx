@@ -1,5 +1,5 @@
 import React, { ReactElement, useEffect, useRef, useState } from 'react'
-import { Link, Redirect } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import { User } from '../../modules/user';
 import './login.css';
 import gsap from 'gsap'
@@ -44,7 +44,7 @@ export default function Login(props: Props): ReactElement{
     }
 
     const validatePassword = (pass: string) => {
-        if(pass == ''){
+        if(pass === ''){
             alert("Password can't be empty!")
             return false;
         }
@@ -54,7 +54,7 @@ export default function Login(props: Props): ReactElement{
     }
 
     const validateEmail = (email: string) => {
-        if(email == ''){
+        if(email === ''){
             alert("Email can't be empty")
             return false;
         }
@@ -65,7 +65,6 @@ export default function Login(props: Props): ReactElement{
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [isLogin, setIsLogin] = useState(false);
 
     const onSubmit = () => {
         let passwordValid = validatePassword(password)? password: ' ';
@@ -76,7 +75,7 @@ export default function Login(props: Props): ReactElement{
         }
         console.log("Logged in")
         props.initUser.forEach(oldUser=>{
-            if(oldUser['email'] == newUser['email'] && oldUser['password'] == newUser['password']){
+            if(oldUser['email'] === newUser['email'] && oldUser['password'] === newUser['password']){
                 console.log('I found');
                 handleUserChange(oldUser);
                 onLoggedIn(true);

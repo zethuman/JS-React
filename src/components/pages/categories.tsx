@@ -3,20 +3,17 @@ import { Link } from 'react-router-dom'
 import { category } from '../../mock/categories-mock'
 import '../app/App.css'
 import { gsap } from 'gsap'
-import CategoryItem from '../category-item/category-item'
 
 
-interface Props {
-    
-}
-
-export default function Categories({}: Props): ReactElement {
+export default function Categories(): ReactElement {
 
     const headRef = useRef(null);
     let textRef = useRef(null);
 
     useEffect(() => {
-        gsap.from(headRef.current, {duration: 1, autoAlpha: 0, ease: 'none', delay: 0.1})
+        gsap.from(headRef.current, {duration: 2, ease: "bounce.out", y: -154, stagger: {
+            amount: 0.15
+        }})
     }, [headRef])
 
     useEffect(() => {
@@ -26,26 +23,29 @@ export default function Categories({}: Props): ReactElement {
     }, [textRef])
 
 
-    const elements = category.map((item: any) => {
-      
-        const { src, text,  label, category_id } = item;
-        
-          return ( <Link to={`categories/${category_id}`} key = {category_id} className="list-group-item">
-                      <CategoryItem src={src} text = {text} label={label} category_id={category_id}  />
-                  </Link>
-            );
-      })
-
-    return (
+      return (
         <>
-        <div ref={headRef}>
-            <h1 className="categories" ref={textRef}>CATEGORIES</h1>
+        <div>
+            <h1  className="categories" ref={headRef}>Categories</h1>
         </div>
         <div className='cards'>
             <div className="cards__container">
-                <div className="cards__wrapper" ref={headRef}>
+                <div className="cards__wrapper">
                     <ul className="cards__items">
-                        {elements}
+                        {
+                            category.map(category=>(
+                                <li key={category.category_id} className="cards__item">
+                                    <Link to={`categories/${category.category_id}`} className="cards__item__link">
+                                        <figure className='cards__item__pic-wrap' data-category={category.label}>
+                                            <img src={`../${category.src}`} alt="Travel" className="cards__item__img"/>
+                                        </figure>
+                                        <div className="cards__item__info">
+                                            <h5 className="cards__item__text">{category.text}</h5>
+                                        </div>
+                                    </Link>
+                                </li>   
+                            ))
+                        }
                     </ul>
                 </div>
             </div>
