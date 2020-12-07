@@ -13,7 +13,7 @@ body {
    
 }
 
-.sidenav {
+.sidenav { 
     height: 100%;
     background-color: rgb(27, 26, 26);
     overflow-x: hidden;
@@ -79,3 +79,4 @@ body {
 .btn-secondary{
     margin-left: 3%;
 }
+

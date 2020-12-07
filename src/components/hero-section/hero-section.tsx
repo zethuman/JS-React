@@ -2,6 +2,9 @@ import React, { ReactElement, useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import './hero-section.css';
 import { textIntro } from '../animation/animation'
+import { CSSPlugin } from 'gsap/CSSPlugin'
+
+gsap.registerPlugin(CSSPlugin)
 
 interface Props {
     
@@ -13,10 +16,12 @@ export default function HeroSection(): ReactElement {
     let textRef = useRef(null);
 
     useEffect(() => {
+        gsap.registerPlugin();
         gsap.from(headRef.current, {duration: 1, autoAlpha: 0, ease: 'none'})
     }, [headRef])
 
     useEffect(() => {
+        gsap.registerPlugin();
         textIntro(textRef)
     }, [])
 

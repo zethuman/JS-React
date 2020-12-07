@@ -9,10 +9,9 @@ import { ContextUsername } from '../contexts/context-username';
 
 interface Props{
   initUser: User;
-  onLoggedOut: any;
 }
 
-function Navbar({onLoggedOut}: Props): ReactElement {
+function Navbar({initUser}: Props): ReactElement {
 
   const isLoggedIn = useContext(ContextIsLoggedIn);
   const username = useContext(ContextUsername);
@@ -27,7 +26,6 @@ function Navbar({onLoggedOut}: Props): ReactElement {
   
     const handleClick = () => setClick(!click);
     const handleLogOut = () => { 
-      onLoggedOut = false;
       sessionStorage.removeItem('isLoggedIn')
       sessionStorage.removeItem('username')
       console.log('logout')

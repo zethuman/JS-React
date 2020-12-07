@@ -5,6 +5,7 @@ export interface Products {
     label: string,
     description: string,
     category_id: number,
+    date: Date
     // user_id: number;
   }
   

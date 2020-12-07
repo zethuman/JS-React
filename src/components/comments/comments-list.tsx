@@ -1,8 +1,8 @@
 import React, { ReactElement, useEffect, useRef, useState, useContext} from 'react'
 import { Comments } from '../../modules/comments';
 import './comments-list.css';
-import { Context } from '../contexts/context'
 import {v4 as uuid} from 'uuid'
+import { ContextUsername } from '../contexts/context-username';
 
 
 interface Props {
@@ -14,8 +14,8 @@ export default function CommentsList(props : Props): ReactElement {
 
 	const[comments, setComments] = useState('');
 	const commentRef = useRef<HTMLTextAreaElement>(null);
-	
-	const context = useContext(Context);
+
+	const context = useContext(ContextUsername);
 
     useEffect(() => {
         commentRef.current?.focus()

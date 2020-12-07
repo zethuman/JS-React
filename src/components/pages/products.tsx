@@ -1,13 +1,32 @@
-import React, { ReactElement, useEffect, useRef } from 'react'
-import { products } from '../../mock/products-mock';
-import '../../components/cards/cards.css'
+import { gsap } from 'gsap';
+import React, { ReactElement, useEffect, useRef } from 'react';
+import { v4 as uuid } from 'uuid';
+import '../../components/cards/cards.css';
+import { products } from "../../mock/products-mock";
 import ProductItem from '../product-item/product-item';
-import { gsap } from 'gsap'
+// import axios from '../api/axios';
+
+
+// interface Props{
+//     fetchUrl: string;
+// }
 
 export default function Products(): ReactElement {
 
     const headRef = useRef(null);
     const textRef = useRef(null);
+    // const [products, setProducts] = useState<any[]>([]);
+    // console.log(fetchUrl)
+
+    // useEffect(() => {
+    //     async function fetchData() {
+    //         const result = await axios.get(fetchUrl);
+    //         console.log(result.data);
+    //         setProducts([ ...result.data])
+    //     }
+
+    //     fetchData();
+    // }, []);
 
     useEffect(() => {
         gsap.from(headRef.current, {duration: 2, ease: "bounce.out", y: -154, stagger: {
@@ -28,7 +47,7 @@ export default function Products(): ReactElement {
         const { src, product_id,  text,  label, description, category_id } = item;
         
           return ( 
-                      <ProductItem src={src} product_id={product_id} text = {text} label={label} description={description} category_id={category_id}  />);
+             <ProductItem key={uuid()}  src={src} product_id={product_id} text = {text} label={label} description={description} category_id={category_id}  />);
       })
 
       return (

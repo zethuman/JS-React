@@ -20,7 +20,8 @@ export default function ProductItem({src, product_id, text, label, description}:
                 <div className="content">
                     <span>{label}</span>
                     <h3>
-                        <Link to={`products/${product_id}`}>{text}</Link>
+                        {text}
+                        {/* <Link to={`products/${product_id}`}>{text}</Link> */}
                     </h3>
                     <p>{description}</p>
                 </div>

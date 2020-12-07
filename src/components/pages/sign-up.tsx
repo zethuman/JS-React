@@ -107,8 +107,8 @@ export default function Registration(props: Props){
                     <div className="login-form">
                         <form>
                             <div className="form-group">
-                                <label>Name</label>
-                                <input type="text" placeholder='Name' className= 'form-control' ref={inputText} onChange={e => setName(e.target.value)}/>
+                                <label >Name</label>
+                                <input type="text" placeholder='Name' className= 'form-control input-requirements' ref={inputText} onChange={e => setName(e.target.value)}  minLength={3} required />
                             </div>
                             <div className="form-group">
                                 <label>Email</label>
@@ -118,22 +118,13 @@ export default function Registration(props: Props){
                                 <label>Password</label>
                                 <input type="text" placeholder='Password' className= 'form-control' onChange={e => setPassword(e.target.value)}/>
                             </div>
-                            <button className="btn btn-black" onClick = {onSubmit}>Sign Up</button>
-                            <Link to={'/'}><button className="btn btn-secondary" >Cancel</button></Link>
+                            <Link to={'/login'}><button className="btn-black" onClick = {onSubmit}>Sign Up</button></Link>  
+                            <Link to={'/'}><button className="btn-secondary" >Cancel</button></Link>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-        // <form className='mar'>
-        //     <input type="text" placeholder='Name' className= 'item-add-form d-flex' onChange={e => setName(e.target.value)}/>
-        //     <br/>
-        //     <input type="text" placeholder='Email' className= 'item-add-form d-flex' onChange={e => setEmail(e.target.value)}/>
-        //     <br/>
-        //     <input type="text" placeholder='Password' className= 'item-add-form d-flex' onChange={e => setPassword(e.target.value)}/>
-        //     <br/>
-        //     <button className="btn btn-outline-secondary mar-top" onClick = {onSubmit}>Sign Up</button>
-        //     <Link to={'/'}><button className="btn btn-outline-secondary mar-top mar-left" >Cancel</button></Link>
-        // </form>
+      
     )
 }

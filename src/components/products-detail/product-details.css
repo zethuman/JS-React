@@ -1,55 +1,193 @@
-.details{
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    margin: 50px 0;
+.details {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 50px 0;
 }
-.details img{
-    max-width: 500px;
-    min-width: 290px;
-    height: 300px;
+.details img {
+  max-width: 500px;
+  min-width: 290px;
+  height: 300px;
+  display: block;
+  object-fit: cover;
+  margin: 25px;
+}
+.details .box {
+  max-width: 500px;
+  min-width: 290px;
+  margin: 25px;
+}
+.box .row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+.box .row h2 {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+p {
+  line-height: 1.5;
+  margin-left: 12px;
+}
+
+h3 {
+  line-height: 1.5;
+  margin-left: 12px;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.download {
+  width: auto;
+  text-decoration: none;
+}
+
+.rate {
+  margin-left: 10px;
+}
+
+.rating {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.share-main {
+  position: relative;
+  border: 3px solid green;
+}
+
+.share-btn {
+  position: absolute;
+  top: 430px;
+  right: 130px;
+  padding: 0px 10px 0px 10px;
+  color: #000000a6;
+  background-color: #ffffffda;
+  border: 1px solid;
+  border-radius: 4px;
+}
+
+.info {
+  position: absolute;
+  top: 430px;
+  right: 40px;
+  padding: 0px 10px 0px 10px;
+  color: #000000a6;
+  background-color: #ffffffda;
+  border: 1px solid;
+  border-radius: 4px;
+}
+
+.share-btn:hover {
+  color: #000000;
+  border: 1px solid;
+  border-radius: 4px;
+}
+
+.info:hover {
+  color: #000000;
+  border: 1px solid;
+  border-radius: 4px;
+}
+
+.share-main-2 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+
+.modal{
+    margin-left: 12px;
+}
+
+.info-intro{
+    padding: 16px;
+}
+
+.h2-info{
     display: block;
-    object-fit: cover;
-    margin: 25px;
+    margin-top: 10px;
+    margin-left: 12px;
+    font-size: 21px;
+    font-weight: 400;
 }
-.details .box{
-    max-width: 500px;
-    min-width: 290px;
-    margin: 25px;
+
+.date{
+    font-size: 12px;
+    display: inline;
 }
-.box .row{
+
+.dl-info{
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
-}
-.box .row h2{
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-p{
-    line-height: 1.5;
-    margin-left: 12px;
+    flex-wrap: wrap;
+    font-size: 15px;
+    box-sizing: border-box;
+    line-height: 24px;
+    padding: 16px;
 }
 
-h3{
-    line-height: 1.5;
-    margin-left: 12px;
+.views{
+    display: block;
+    flex-basis: 160px;
+    flex-grow: 1;
+    padding: 8px;
+    line-height: 24px;
+    font-size: 15px;
 }
 
-a:hover{
-    text-decoration: none;
+.downloads{
+    display: block;
+    flex-basis: 160px;
+    flex-grow: 1;
+    padding: 8px;
+    line-height: 24px;
+    font-size: 15px;
 }
 
-.download{
-    width: auto;
-    text-decoration: none;
+.info-p{
+    color: #000000bd;
 }
 
-.rate{
-    margin-left: 10px;
+.info-p-count{
+    margin: 10px 0 0 0 ;
+    color: #000000;
+    font-size: 24px;
 }
 
-.rating{
-    margin-left: 15px;
-    margin-right: 15px;
+.block{
+    padding: 10px;
+    background-color: #ffffff18;
+    border-radius: 4px;
+    border: rgb(0, 0, 0), solid;
+    font-size: 14px;
+    font-weight: 400;
 }
+
+.share{
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.share-pin:hover{
+    color: 	#E60023;
+}
+
+.share-fac:hover{
+    color: 	#4267B2;
+}
+.share-twit:hover{
+    color: rgba(0, 172, 238);
+}
+.share-mail:hover{
+    color: rgb(209, 130, 130);
+}
+
+
+
+
+

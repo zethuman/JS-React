@@ -8,7 +8,6 @@ import gsap from 'gsap'
 interface Props{
     initUser: User[];
     onUserChange: (newUser: User) => void;
-    onLoggedIn: (isLoggedIn: boolean) => void;
 }
 
 
@@ -32,10 +31,6 @@ export default function Login(props: Props): ReactElement{
         emailRef.current?.focus()
     }, [])
 
-    
-    const onLoggedIn= (isLoggedIn: boolean) => {
-        props.onLoggedIn(true);
-    }
 
     const handleUserChange = (newUser: User) => {
         props.onUserChange(newUser);
@@ -75,7 +70,6 @@ export default function Login(props: Props): ReactElement{
         props.initUser.forEach(oldUser=>{
             if(oldUser['email'] === newUser['email'] && oldUser['password'] === newUser['password']){
                 handleUserChange(oldUser);
-                onLoggedIn(true);
                 sessionStorage.setItem('email', email);
                 sessionStorage.setItem('password', password);
                 sessionStorage.setItem("isLoggedIn", 'true');
@@ -105,14 +99,14 @@ export default function Login(props: Props): ReactElement{
                                 <label>Password</label>
                                 <input type="text" placeholder='Password' className= 'form-control' onChange={e => setPassword(e.target.value)}/>
                             </div>
-                            <Link to={'/'}><button className="btn btn-black" onClick={onSubmit}>Login</button></Link>
-                            <Link to={'/'}><button className="btn btn-secondary" >Cancel</button></Link>
+                            <Link to={'/'}><button className="btn-black" onClick={onSubmit}>Login</button></Link>
+                            <Link to={'/'}><button className="btn-secondary" >Cancel</button></Link>
                             <br/>
                             <br/>
                             <h5>Don't have an account?</h5>
                             <br/>
                             <Link to={'/sign-up'}><div>
-                                <button className="btn btn-black">Sign Up</button>
+                                <button className="btn-black">Sign Up</button>
                                 </div></Link>
                         </form>
                     </div>
