@@ -1,13 +1,30 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import { useRouteMatch } from 'react-router-dom';
-import { products } from '../../mock/products-mock';
 import CategoriesDetailItem from './categories-detail-item';
 import './categories-detail.css';
+import axios from '../api/axios';
+
+interface Props{
+  fetchUrl: string
+}
 
 
-export default function CategoriesDetail(): ReactElement {
+
+export default function CategoriesDetail({fetchUrl}: Props): ReactElement {
+    const [products, setProducts] = useState<any[]>([]);
 
     const match = useRouteMatch<{category_id: string}>();
+
+    useEffect(() => {
+        async function fetchData() {
+            const result = await axios.get(fetchUrl);
+            console.log(result.data);
+            setProducts([ ...result.data])
+        }
+    
+        fetchData();
+    }, []);
+    
 
      const filteredElements = products.filter((item)=>
           item.category_id === parseInt(match.params.category_id)

@@ -1,130 +1,202 @@
-import gsap from 'gsap';
-import React, { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { User } from '../../modules/user';
-import './login.css';
+import gsap from "gsap";
+import React, { useEffect, useRef, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import validator from "validator";
+import axios from "../api/axios";
+import "./login.css";
 
+export default function Registration() {
+  const [error, setError] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const history = useHistory();
 
-interface Props{
-    onChange: (user: User) => void;
-}
+  console.log("Errors: ", error);
 
+  const headRef = useRef(null);
+  const textRef = useRef(null);
 
-export default function Registration(props: Props){
+  useEffect(() => {
+    gsap.from(headRef.current, {
+      duration: 1,
+      autoAlpha: 0,
+      ease: "none",
+      delay: 0.1,
+    });
+  }, [headRef]);
 
-    const headRef = useRef(null);
-    const textRef = useRef(null);
+  useEffect(() => {
+    gsap.from(textRef.current, { duration: 1, autoAlpha: 0, ease: "none" });
+  }, [textRef]);
 
-    useEffect(() => {
-        gsap.from(headRef.current, {duration: 1, autoAlpha: 0, ease: 'none', delay: 0.1})
-    }, [headRef])
+  const inputText = useRef<HTMLInputElement>(null);
 
-    useEffect(() => {
-        gsap.from(textRef.current, {duration: 1, autoAlpha: 0, ease: 'none'})
-    }, [textRef])
+  useEffect(() => {
+    inputText.current?.focus();
+  }, []);
 
-    const inputText = useRef<HTMLInputElement>(null);
-
-    useEffect(() => {
-        inputText.current?.focus()
-    }, [])
-
-    const onChange = (user: User) => {
-        props.onChange(user)
+  const validateName = (name: string) => {
+    if (validator.isEmpty(name)) {
+      setError("empty_name");
+      return false;
+    } else {
+      return true;
     }
+  };
 
-    const validateName = (name: string) => {
-        if(name === ' '){
-            alert("Name can't be empty!")
-            return false;
-        }else {
-            return true;
-        }
+  const validatePassword = (pass: string) => {
+    if (validator.isEmpty(pass)) {
+      setError("empty_password");
+      return false;
+    } else {
+      if (pass.length >= 6) {
+        return true;
+      } else {
+        setError("incorrect_password");
+        return false;
+      }
     }
+  };
 
-    const validatePassword = (pass: string) => {
-        if(pass === ''){
-            alert("Password can't be empty!");
-            return false;
-        }
-        else{
-            if(pass.length >= 6){
-                return true;
-            }
-            else {
-                alert('At least 6 symbols in password! ')
-                return false;
-            }
-        }
+  const validateEmail = (email: string) => {
+    if (validator.isEmpty(email)) {
+      setError("empty_email");
+      return false;
+    } else {
+      if (validator.isEmail(email)) {
+        return true;
+      } else {
+        setError("incorrect_email");
+        return false;
+      }
     }
+  };
 
-    const validateEmail = (email: string) => {
-        if(email === ''){
-            alert("Email can't be empty");
-            return false;
-        }
-        else {
-            let em =  /[@]/;
-            if(email.match(em)){
-                return true;
-            }
-            else {
-                alert('Email must contain @ ')
-                return false;
-            }
-        }
+  async function onSubmit() {
+    let passwordValid = validatePassword(password) ? password : "notpassword";
+    let emailValid = validateEmail(email) ? email : "notemail";
+    let nameValid = validateName(name) ? name : "notname";
+    const newUser = {
+      name: nameValid,
+      email: emailValid,
+      password: passwordValid,
+    };
+    console.log(newUser);
+    if (
+      passwordValid === "notpassword" ||
+      emailValid === "notemail" ||
+      nameValid === "notname"
+    ) {
+      console.log("Error");
+    } else if (
+      passwordValid !== "notpassword" &&
+      emailValid !== "notemail" &&
+      nameValid !== "notname"
+    ) {
+      const result = await axios.post("users", newUser).then((resp) => {
+        console.log(resp.data);
+        history.push("/login");
+      });
+      console.log(result);
+      setError("success");
+      sessionStorage.setItem("username", nameValid);
     }
+  }
 
-
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-
-    const onSubmit = (e: any) => {
-        e.preventDefault();
-        let passwordValid = validatePassword(password)? password: ' ';
-        let emailValid = validateEmail(email) ? email: ' ';
-        let nameValid = validateName(name) ? name: ' ';
-        const newUser = {
-            name: nameValid,
-            email: emailValid, 
-            password: passwordValid,
-        }
-        console.log(newUser);
-        onChange(newUser);
-        sessionStorage.setItem('username', nameValid)
-    }
-
-    return(
-        <div ref={headRef }>
-            <div className="sidenav">
-                <div className="login-main-text" ref={textRef}>
-                    <h2>Application<br/> Signup Page </h2>
-                </div>
-            </div>
-            <div className="main">
-                <div className="col-md-6 col-sm-12">
-                    <div className="login-form">
-                        <form>
-                            <div className="form-group">
-                                <label >Name</label>
-                                <input type="text" placeholder='Name' className= 'form-control input-requirements' ref={inputText} onChange={e => setName(e.target.value)}  minLength={3} required />
-                            </div>
-                            <div className="form-group">
-                                <label>Email</label>
-                                <input type="text" placeholder='Email' className= 'form-control' onChange={e => setEmail(e.target.value)}/>
-                            </div>
-                            <div className="form-group">
-                                <label>Password</label>
-                                <input type="text" placeholder='Password' className= 'form-control' onChange={e => setPassword(e.target.value)}/>
-                            </div>
-                            <Link to={'/login'}><button className="btn-black" onClick = {onSubmit}>Sign Up</button></Link>  
-                            <Link to={'/'}><button className="btn-secondary" >Cancel</button></Link>
-                        </form>
-                    </div>
-                </div>
-            </div>
+  return (
+    <div ref={headRef}>
+      <div className="sidenav">
+        <div className="login-main-text" ref={textRef}>
+          <h2>
+            Application
+            <br /> Signup Page{" "}
+          </h2>
         </div>
-      
-    )
+      </div>
+      <div className="main">
+        <div className="col-md-6 col-sm-12">
+          <div className="login-form">
+            <form onSubmit={(e) => e.preventDefault()}>
+              <div className="form-group">
+                <label>Name</label>
+                <input
+                  type="text"
+                  placeholder="Name"
+                  className="form-control input-requirements"
+                  ref={inputText}
+                  onChange={(e) => setName(e.target.value)}
+                />
+                <span className="error">
+                  <p>{error === "empty_name" ? "Name can't be empty" : null}</p>
+                </span>
+              </div>
+              <div className="form-group">
+                <label>Email</label>
+                <input
+                  type="text"
+                  placeholder="Email"
+                  className="form-control"
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <span className="error">
+                  <p>
+                    {error === "empty_email" ? "Email can't be empty" : null}
+                  </p>
+                </span>
+                <span className="error">
+                  <p>
+                    {error === "incorrect_email"
+                      ? "Email must contain @ like example@example.com"
+                      : null}
+                  </p>
+                </span>
+              </div>
+              <div className="form-group">
+                <label>Password</label>
+                <input
+                  type="text"
+                  placeholder="Password"
+                  className="form-control"
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                <span className="error">
+                  <p>
+                    {error === "empty_password"
+                      ? "Password can't be empty"
+                      : null}
+                  </p>
+                </span>
+                <span className="error">
+                  <p>
+                    {error === "incorrect_password"
+                      ? "Password must contain more than 6 symbols"
+                      : null}
+                  </p>
+                </span>
+                <span className="success">
+                  <p>
+                    {error === "success"
+                      ? "You are successfully Signed Up go to "
+                      : null}
+                    {error === "success" ? (
+                      <Link to={"/login"}>
+                        <span className="success">Login page</span>
+                      </Link>
+                    ) : null}
+                  </p>
+                </span>
+              </div>
+              <button type="submit" className="btn-black" onClick={onSubmit}>
+                Sign Up
+              </button>
+              <Link to={"/"}>
+                <button className="btn-secondary">Cancel</button>
+              </Link>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }

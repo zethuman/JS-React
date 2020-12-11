@@ -1,28 +1,347 @@
 {
-    "categories": [
-        {"src": "images/img-7.jpg", "text": "mortals","label": "people", "category_id": 1},
-        {"src": "images/img-18.jpg",  "text": "large landforms", "label": "mountains", "category_id": 2},
-        {"src": "images/img-16.jpg", "text": "pieces of iron", "label": "cars", "category_id": 3},
-        {"src": "images/img-20.jpg",  "text": "3-dimensional", "label": "3D", "category_id": 4}
-    ],
-    "products": [
-        {"src": "images/img-6.jpg", "product_id": 1, "text": "Crosswalk", "label": "people", "description": "Double Crosswalk", "category_id": 1, "date": "new Date(2020, 11, 27)"},
-        {"src": "images/img-7.jpg", "product_id": 2, "text": "Sunset", "label": "people", "description": "Purple sunset", "category_id": 1, "date": "new Date(2020, 11, 27)"},
-        {"src": "images/img-8.jpg", "product_id": 3, "text": "Caravan", "label": "people", "description": "Desert caravan", "category_id": 1, "date": "new Date(2020, 11, 27)"},
-        {"src": "images/img-9.jpg", "product_id": 4, "text": "Waterfall", "label": "people", "description": "Waterfall in a jungle", "category_id": 1, "date": "new Date(2020, 11, 27)"},
-        {"src": "images/img-13.jpg", "product_id": 5, "text": "Village", "label": "people", "description": "Village on the mountains", "category_id": 1, "date": "new Date(2020, 11, 27)"},
-        {"src": "images/img-1.jpg", "product_id": 6, "text": "Sunset", "label": "mountains", "description": "Sunset over the mountains", "category_id": 2, "date": "new Date(2020, 11, 27)"},
-        {"src": "images/img-11.jpg", "product_id": 7, "text": "Flowers", "label": "mountain", "description": "Mountain covered by flowers", "category_id": 2, "date": "new Date(2020, 11, 27)"},
-        {"src": "images/img-12.jpg", "product_id": 8, "text": "Beach", "label": "mountain", "description": "Mountain beach", "category_id": 2, "date": "new Date(2020, 11, 27)"},
-        {"src": "images/img-18.jpg", "product_id": 9, "text": "Flowers", "label": "mountain", "description": "Mountain flowers", "category_id": 2, "date": "new Date(2020, 11, 27)"},
-        {"src": "images/img-22.jpg", "product_id": 10, "text": "Sanctuary", "label": "mountain", "description": "Mountain sanctuary", "category_id": 2, "date": "new Date(2020, 11, 27)"},
-        {"src": "images/img-5.jpg", "product_id": 11, "text": "Hotel", "label": "cars", "description": "Hotel car", "category_id": 3, "date": "new Date(2020, 11, 27)"},
-        {"src": "images/img-16.jpg", "product_id": 12, "text": "BMW", "label": "cars", "description": "BMW Squats M850i", "category_id": 3, "date": "new Date(2020, 11, 27)"},
-        {"src": "images/img-17.jpg", "product_id": 13, "text": "Vintage", "label": "cars", "description": "Vintage retro summer aesthetic", "category_id": 3, "date": "new Date(2020, 11, 27)"},
-        {"src": "images/img-19.jpg", "product_id": 14, "text": "Lamborghini", "label": "cars", "description": "HURACAN EVO RWD", "category_id": 3, "date": "new Date(2020, 11, 27)"},
-        {"src": "images/img-20.jpg", "product_id": 15, "text": "Mushroom", "label": "3D", "description": "Terminator from Super Mario", "category_id": 4, "date": "new Date(2020, 11, 27)"},
-        {"src": "images/img-21.jpg", "product_id": 16, "text": "Cube", "label": "3D", "description": "Cube of cubes", "category_id": 4, "date": "new Date(2020, 11, 27)"},
-        {"src": "images/img-25.jpg", "product_id": 17, "text": "Paradise", "label": "people", "description": "Vacances paradisiaque a Bali", "category_id": 1, "date": "new Date(2020, 11, 27)"},
-        {"src": "images/img-26.jpg", "product_id": 18, "text": "Pool", "label": "people", "description": "Edgeless Pool", "category_id": 1, "date": "new Date(2020, 11, 27)"}
-    ]
+  "categories": [
+    {
+      "src": "images/img-7.jpg",
+      "text": "mortals",
+      "label": "people",
+      "category_id": 1
+    },
+    {
+      "src": "images/img-18.jpg",
+      "text": "large landforms",
+      "label": "mountains",
+      "category_id": 2
+    },
+    {
+      "src": "images/img-16.jpg",
+      "text": "pieces of iron",
+      "label": "cars",
+      "category_id": 3
+    },
+    {
+      "src": "images/img-20.jpg",
+      "text": "3-dimensional",
+      "label": "3D",
+      "category_id": 4
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "src": "images/img-6.jpg",
+      "product_id": 1,
+      "text": "Crosswalk",
+      "label": "people",
+      "description": "Double Crosswalk",
+      "category_id": 1,
+      "date": "December, 27 2020"
+    },
+    {
+      "src": "images/img-7.jpg",
+      "product_id": 2,
+      "text": "Sunset",
+      "label": "people",
+      "description": "Purple sunset",
+      "category_id": 1,
+      "date": "December, 27 2020"
+    },
+    {
+      "src": "images/img-8.jpg",
+      "product_id": 3,
+      "text": "Caravan",
+      "label": "people",
+      "description": "Desert caravan",
+      "category_id": 1,
+      "date": "December, 27 2020"
+    },
+    {
+      "src": "images/img-9.jpg",
+      "product_id": 4,
+      "text": "Waterfall",
+      "label": "people",
+      "description": "Waterfall in a jungle",
+      "category_id": 1,
+      "date": "December, 27 2020"
+    },
+    {
+      "src": "images/img-13.jpg",
+      "product_id": 5,
+      "text": "Village",
+      "label": "people",
+      "description": "Village on the mountains",
+      "category_id": 1,
+      "date": "December, 27 2020"
+    },
+    {
+      "src": "images/img-1.jpg",
+      "product_id": 6,
+      "text": "Sunset",
+      "label": "mountains",
+      "description": "Sunset over the mountains",
+      "category_id": 2,
+      "date": "December, 27 2020"
+    },
+    {
+      "src": "images/img-11.jpg",
+      "product_id": 7,
+      "text": "Flowers",
+      "label": "mountain",
+      "description": "Mountain covered by flowers",
+      "category_id": 2,
+      "date": "December, 27 2020"
+    },
+    {
+      "src": "images/img-12.jpg",
+      "product_id": 8,
+      "text": "Beach",
+      "label": "mountain",
+      "description": "Mountain beach",
+      "category_id": 2,
+      "date": "December, 27 2020"
+    },
+    {
+      "src": "images/img-18.jpg",
+      "product_id": 9,
+      "text": "Flowers",
+      "label": "mountain",
+      "description": "Mountain flowers",
+      "category_id": 2,
+      "date": "December, 27 2020"
+    },
+    {
+      "src": "images/img-22.jpg",
+      "product_id": 10,
+      "text": "Sanctuary",
+      "label": "mountain",
+      "description": "Mountain sanctuary",
+      "category_id": 2,
+      "date": "December, 27 2020"
+    },
+    {
+      "src": "images/img-5.jpg",
+      "product_id": 11,
+      "text": "Hotel",
+      "label": "cars",
+      "description": "Hotel car",
+      "category_id": 3,
+      "date": "December, 27 2020"
+    },
+    {
+      "src": "images/img-16.jpg",
+      "product_id": 12,
+      "text": "BMW",
+      "label": "cars",
+      "description": "BMW Squats M850i",
+      "category_id": 3,
+      "date": "December, 27 2020"
+    },
+    {
+      "src": "images/img-17.jpg",
+      "product_id": 13,
+      "text": "Vintage",
+      "label": "cars",
+      "description": "Vintage retro summer aesthetic",
+      "category_id": 3,
+      "date": "December, 27 2020"
+    },
+    {
+      "src": "images/img-19.jpg",
+      "product_id": 14,
+      "text": "Lamborghini",
+      "label": "cars",
+      "description": "HURACAN EVO RWD",
+      "category_id": 3,
+      "date": "December, 27 2020"
+    },
+    {
+      "src": "images/img-20.jpg",
+      "product_id": 15,
+      "text": "Mushroom",
+      "label": "3D",
+      "description": "Terminator from Super Mario",
+      "category_id": 4,
+      "date": "December, 27 2020"
+    },
+    {
+      "src": "images/img-21.jpg",
+      "product_id": 16,
+      "text": "Cube",
+      "label": "3D",
+      "description": "Cube of cubes",
+      "category_id": 4,
+      "date": "December, 27 2020"
+    },
+    {
+      "src": "images/img-25.jpg",
+      "product_id": 17,
+      "text": "Paradise",
+      "label": "people",
+      "description": "Vacances paradisiaque a Bali",
+      "category_id": 1,
+      "date": "December, 27 2020"
+    },
+    {
+      "src": "images/img-26.jpg",
+      "product_id": 18,
+      "text": "Pool",
+      "label": "people",
+      "description": "Edgeless Pool",
+      "category_id": 1,
+      "date": "December, 27 2020"
+    },
+    {
+      "src": {},
+      "product_id": "bd8d24e8-8538-49ce-8f24-82a46f2bc35a",
+      "text": "Author thinks about name...",
+      "label": "",
+      "description": "",
+      "category_id": 0,
+      "date": "November 11, 2020",
+      "id": 2
+    }
+  ],
+  "comments": [
+    {
+      "comment_id": "1",
+      "product_id": 1,
+      "username": "Admin",
+      "comment": "admin admined this site",
+      "id": 1
+    },
+    {
+      "comment_id": "6a7ef2d5-4c94-494a-90f7-92088ebbf02f",
+      "product_id": 1,
+      "username": "Rakhat",
+      "comment": "nkl.ksdc",
+      "id": 2
+    },
+    {
+      "comment_id": "69f02d30-7904-4ec6-a032-b6938d403e82",
+      "product_id": 3,
+      "username": "Unauthorized user",
+      "comment": "scsdcsdc",
+      "id": 6
+    },
+    {
+      "comment_id": "17827026-e14a-43e7-b045-1a79f784c9ab",
+      "product_id": 1,
+      "username": "Unauthorized user",
+      "comment": "asdasd",
+      "id": 7
+    },
+    {
+      "comment_id": "e94b4e02-ed09-42c6-9361-2cd5c08b8af7",
+      "product_id": 1,
+      "username": "Unauthorized user",
+      "comment": "asdasd",
+      "id": 8
+    },
+    {
+      "comment_id": "f0f53bdd-5f16-4d68-b9d7-53f5d72e263b",
+      "product_id": 8,
+      "username": "Unauthorized user",
+      "comment": "Lol kek\n",
+      "id": 9
+    },
+    {
+      "comment_id": "c36b1964-44f2-46e2-9252-cd008ba0e456",
+      "product_id": 2,
+      "username": "Unauthorized user",
+      "comment": "Lol kek",
+      "id": 10
+    },
+    {
+      "comment_id": "5bc283b7-aaa9-4704-a53b-fdf1c015db52",
+      "product_id": 2,
+      "username": "Rakhat",
+      "comment": "Lol kek",
+      "id": 11
+    },
+    {
+      "comment_id": "d7afa133-938e-4434-9c65-12f8ba23efc9",
+      "product_id": 6,
+      "username": "Rakhay",
+      "comment": "cdscsd",
+      "id": 12
+    },
+    {
+      "comment_id": "ff423972-655a-4180-8e79-6faf3a99d9e0",
+      "product_id": 10,
+      "username": "Admin",
+      "comment": "comment",
+      "id": 13
+    },
+    {
+      "comment_id": "674b34e6-196c-47aa-9153-ce90d6f1d80b",
+      "product_id": 4,
+      "username": "Admin",
+      "comment": "comment",
+      "id": 14
+    },
+    {
+      "comment_id": "60ebcb57-7104-495a-9701-5472f8a30268",
+      "product_id": 4,
+      "username": "{}",
+      "comment": "comment2",
+      "id": 15
+    },
+    {
+      "comment_id": "e9d635e3-226f-4dd7-bb32-63d831bbcbb6",
+      "product_id": 4,
+      "username": "{}",
+      "comment": "comment3",
+      "id": 16
+    },
+    {
+      "comment_id": "08511f08-0460-4932-bf90-89dcf9b7df20",
+      "product_id": 4,
+      "username": "Unauthorized user",
+      "comment": "comment4",
+      "id": 17
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Admin",
+      "email": "admin@gmail.com",
+      "password": "adminadmin",
+      "isLogged": false
+    },
+    {
+      "name": "Rakhat",
+      "email": "rakhat@gmail.com",
+      "password": "lolkek",
+      "id": 7,
+      "isLogged": false
+    },
+    {
+      "name": "Guest",
+      "email": "guest@gmail.com",
+      "password": "humanity",
+      "id": 8,
+      "isLogged": false
+    },
+    {
+      "name": "Lol",
+      "email": "kek@gmail.com",
+      "password": "lolkek",
+      "id": 9,
+      "isLogged": false
+    },
+    {
+      "name": "Rakhay",
+      "email": "r@gmail.com",
+      "password": "lolkek",
+      "id": 10,
+      "isLogged": false
+    },
+    {
+      "name": "Bekzat",
+      "email": "b@gmail.com",
+      "password": "123456",
+      "id": 11,
+      "isLogged": false
+    }
+  ]
 }

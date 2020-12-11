@@ -10,6 +10,47 @@
   z-index: 999;
 }
 
+.search_bar{
+  display: flex;
+  width: 50%;
+  margin-bottom: 15px;
+  margin-right: 130px;
+  margin-left: 50px;
+  height: 50%;
+}
+
+.search_input{
+  max-width: 1800px;
+  width: 100%;
+  padding: 2px;
+  padding-right: 260px;
+  border: none;
+  border-radius: 80px;
+  text-decoration: none;
+  outline-style: none;
+  padding: 10px;
+  outline: none;
+}
+
+/* input{
+  text-indent: 10px;
+} */
+
+.icon {
+  padding: 10px;
+  color: #000000;
+  min-width: 40px;
+  text-align: center;
+}
+
+input[type="lol"]::placeholder{
+  padding-left: 20px;
+}
+
+.navbar-logo{
+  padding-bottom: 15px;
+}
+
 .navbar-container {
   display: flex;
   justify-content: center;
@@ -42,7 +83,7 @@
 
 .nav-menu {
   display: grid;
-  grid-template-columns: repeat(4, auto);
+  grid-template-columns: repeat(6, auto);
   grid-gap: 10px;
   list-style: none;
   text-align: center;
@@ -52,7 +93,7 @@
 }
 
 .nav-item {
-  height: 60px;
+  height: 50px;
 }
 
 .nav-links {
@@ -69,7 +110,7 @@
   color: #fff !important;
   border-bottom: 2px solid #fff;
   outline: none;
-  transition: all 0.2s ease-out;
+  transition: all 0.1s ease-out;
 }
 
 .fa-bars {

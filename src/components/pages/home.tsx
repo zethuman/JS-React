@@ -5,7 +5,7 @@ import Footer from '../footer/footer';
 import HeroSection from '../hero-section/hero-section';
 
 export default function Home() {
-    return(
+    return (
         <>
             <HeroSection />
             <Cards />

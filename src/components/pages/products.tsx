@@ -1,32 +1,30 @@
 import { gsap } from 'gsap';
-import React, { ReactElement, useEffect, useRef } from 'react';
+import React, { ReactElement, useEffect, useRef, useState } from 'react';
 import { v4 as uuid } from 'uuid';
 import '../../components/cards/cards.css';
-import { products } from "../../mock/products-mock";
 import ProductItem from '../product-item/product-item';
-// import axios from '../api/axios';
+import axios from '../api/axios';
 
 
-// interface Props{
-//     fetchUrl: string;
-// }
+interface Props{
+    fetchUrl: string;
+}
 
-export default function Products(): ReactElement {
+export default function Products({fetchUrl}: Props): ReactElement {
 
     const headRef = useRef(null);
     const textRef = useRef(null);
-    // const [products, setProducts] = useState<any[]>([]);
-    // console.log(fetchUrl)
+    const [products, setProducts] = useState<any[]>([]);
 
-    // useEffect(() => {
-    //     async function fetchData() {
-    //         const result = await axios.get(fetchUrl);
-    //         console.log(result.data);
-    //         setProducts([ ...result.data])
-    //     }
+    useEffect(() => {
+        async function fetchData() {
+            const result = await axios.get(fetchUrl);
+            console.log(result.data);
+            setProducts([ ...result.data])
+        }
 
-    //     fetchData();
-    // }, []);
+        fetchData();
+    }, []);
 
     useEffect(() => {
         gsap.from(headRef.current, {duration: 2, ease: "bounce.out", y: -154, stagger: {

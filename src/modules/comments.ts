@@ -1,7 +1,6 @@
-import { User } from './user';
 export interface Comments{
     comment_id: string,
     product_id: number,
+    username: string,
     comment: string,
-    username: string
 }

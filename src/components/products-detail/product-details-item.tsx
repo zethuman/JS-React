@@ -49,29 +49,27 @@ export default function ProductDetailsItem({
     isClicked ? setCount(count + 0) : setCount(count + 1);
   };
 
-  const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
+//   const monthNames = [
+//     "January",
+//     "February",
+//     "March",
+//     "April",
+//     "May",
+//     "June",
+//     "July",
+//     "August",
+//     "September",
+//     "October",
+//     "November",
+//     "December",
+//   ];
 
-  let newdate =
-    monthNames[date.getUTCMonth() - 1] +
-    " " +
-    date.getUTCDate() +
-    ", " +
-    date.getUTCFullYear();
-
-  console.log(imgRef.current?.clientHeight);
+//   let newdate =
+//     monthNames[date.getUTCMonth() - 1] +
+//     " " +
+//     date.getUTCDate() +
+//     ", " +
+//     date.getUTCFullYear();
 
   return (
     <>
@@ -188,7 +186,7 @@ export default function ProductDetailsItem({
             <ModalInfo open={isOpenInfo} onClose={() => setIsOpenInfo(false)}>
               <div className="info-intro">
                 <h2 className="h2-info">Info</h2>
-                <p className="date">Published on {newdate}</p>
+                <p className="date">Published on {date}</p>
               </div>
               <dl className="dl-info">
                 <div className="views">

@@ -1,32 +1,38 @@
-import React, { ReactElement, useState } from "react";
+import React, { ReactElement, useEffect, useState } from "react";
 import { useRouteMatch } from "react-router-dom";
-import { products } from "../../mock/products-mock";
-import { Comments } from "../../modules/comments";
+import axios from "../api/axios";
 import CommentsShow from "../comments-show/comments-show";
 import CommentsList from "../comments/comments-list";
 import ProductDetailsItem from "./product-details-item";
-// import axios from '../api/axios';
 
-// interface Props{
-//   fetchUrl: string
-// }
+interface Props {
+  fetchUrl: string;
+}
 
-export default function ProductDetails(): ReactElement {
-  const initComments: Comments[] = [];
-  // const [products, setProducts] = useState<any[]>([]);
+export default function ProductDetails({ fetchUrl }: Props): ReactElement {
+  const [products, setProducts] = useState<any[]>([]);
+  const [comments, setComments] = useState<any[]>([]);
 
   const match = useRouteMatch<{ product_id: string }>();
 
-//   useEffect(() => {
-//     async function fetchData() {
-//         const result = await axios.get(fetchUrl);
-//         console.log(result.data);
-//         setProducts([ ...result.data])
-//     }
+  useEffect(() => {
+    async function fetchData() {
+      const result = await axios.get(fetchUrl);
+      setProducts([...result.data]);
+    }
 
-//     fetchData();
-// }, []);
+    fetchData();
+  }, []);
 
+  useEffect(() => {
+    async function fetchComment() {
+      const result = await axios.get("comments");
+      console.log(result.data);
+      setComments([...result.data]);
+    }
+
+    fetchComment();
+  }, []);
 
   const filteredElements = products.filter(
     (item) => item.product_id === parseInt(match.params.product_id)
@@ -48,18 +54,22 @@ export default function ProductDetails(): ReactElement {
     );
   });
 
-  const [comments, setComments] = useState(initComments);
+  // const [comments, setComments] = useState(initComments);
 
-  const onChange = (comment: Comments) => {
-    setComments([...comments, comment]);
-  };
+  // const onChange = (comment: Comments) => {
+  //   setComments([...comments, comment]);
+  // };
 
-  const commentsElements = comments.map((item: any) => {
-    const { comment, product_id } = item;
+  const filteredComments = comments.filter(
+    (item) => item.product_id === parseInt(match.params.product_id)
+  );
+
+  const commentsElements = filteredComments.map((item: any) => {
+    const { username, comment, comment_id } = item;
 
     return (
-      <li key={product_id} className="list-group-item">
-        <CommentsShow comment={comment} />
+      <li key={comment_id} className="list-group-item">
+        <CommentsShow comments={comment} username={username} />
       </li>
     );
   });
@@ -71,12 +81,8 @@ export default function ProductDetails(): ReactElement {
       </div>
       <div>{elements}</div>
       <div>
-        <CommentsList
-          onChange={onChange}
-          product_id={parseInt(match.params.product_id)}
-        />
+        <CommentsList product_id={parseInt(match.params.product_id)} />
       </div>
-
       <div>{commentsElements}</div>
     </>
   );

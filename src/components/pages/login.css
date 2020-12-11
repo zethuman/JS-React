@@ -20,6 +20,36 @@ body {
     padding-top: 20px;
 }
 
+.error p{
+    color: red;
+    font-size: 13px;
+}
+
+
+.success p{
+    color: rgba(0, 128, 0, 0.808);
+    font-size: 13px;
+}
+
+.success{
+    color: rgba(0, 128, 0, 0.808);
+    font-size: 14px;
+}
+
+.notfound p{
+    color: red;
+    font-size: 13px;
+}
+
+.notfound{
+    color: red;
+    font-size: 14px;
+}
+/* input[type="email"]:invalid{
+    border-color: red;
+    color: red;
+} */
+
 
 .main {
     padding: 0px 10px;

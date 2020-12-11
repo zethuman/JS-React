@@ -1,22 +1,22 @@
-import React, { ReactElement, useContext } from 'react'
-import { ContextUsername } from '../contexts/context-username'
-import './comments-show.css'
+import React, { ReactElement } from "react";
+// import { ContextUsername } from "../contexts/context-username";
+import "./comments-show.css";
 
 interface Props {
-    comment: string
+  comments: string;
+  username: string;
 }
 
-export default function CommentsShow({comment}: Props): ReactElement {
+export default function CommentsShow({comments, username}: Props): ReactElement {
+//   const username = useContext(ContextUsername);
 
-    const username = useContext(ContextUsername)
-
-    return (
-        <>
-            <hr/>
-        <div className="comments">
-            <span className="little">{username}</span>
-            <p>{comment}</p>
-        </div>
-        </>
-    )
+  return (
+    <>
+      <hr />
+      <div className="comments">
+        <span className="little">{username}</span>
+        <p>{comments}</p>
+      </div>
+    </>
+  );
 }
