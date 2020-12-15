@@ -35,7 +35,7 @@ export default function ProductDetails({ fetchUrl }: Props): ReactElement {
   }, []);
 
   const filteredElements = products.filter(
-    (item) => item.product_id === parseInt(match.params.product_id)
+    (item) => item.product_id === parseInt(match.params.product_id) || item.product_id === match.params.product_id
   );
 
   const elements = filteredElements.map((item: any) => {

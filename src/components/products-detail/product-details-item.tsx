@@ -35,7 +35,7 @@ export default function ProductDetailsItem({
   //   let pageviews = ReactGA.pageview(
   //     window.location.pathname + window.location.search
   //   );
-  let imgUrl = `../../${src}`;
+  let imgUrl = `${src}`;
 
   const handleClick = (e: any) => {
     e.preventDefault();
@@ -49,39 +49,17 @@ export default function ProductDetailsItem({
     isClicked ? setCount(count + 0) : setCount(count + 1);
   };
 
-//   const monthNames = [
-//     "January",
-//     "February",
-//     "March",
-//     "April",
-//     "May",
-//     "June",
-//     "July",
-//     "August",
-//     "September",
-//     "October",
-//     "November",
-//     "December",
-//   ];
-
-//   let newdate =
-//     monthNames[date.getUTCMonth() - 1] +
-//     " " +
-//     date.getUTCDate() +
-//     ", " +
-//     date.getUTCFullYear();
-
   return (
     <>
       <div className="details">
-        <img src={`../../${src}`} alt="Travel" ref={imgRef} />
+        <img src={`${src}`} alt="Travel" ref={imgRef} />
         <div className="box">
           <div className="row">
             <h2>{text}</h2>
           </div>
           <p>{description}</p>
           <div className="download">
-            <a href={`../../${src}`} download>
+            <a href={`${src}`} download>
               <p>
                 Download <i className="fas fa-download" />{" "}
               </p>
@@ -107,14 +85,14 @@ export default function ProductDetailsItem({
                 <div className="info-intro">
                   <h2 className="h2-info">Share</h2>
                   {JSON.stringify(sessionStorage.getItem("username")) !=
-                  null ? (
-                    <p className="date">
-                      Photo by{" "}
-                      {JSON.stringify(sessionStorage.getItem("username"))}
-                    </p>
-                  ) : (
-                    <p>Login to see author</p>
-                  )}
+                    null ? (
+                      <p className="date">
+                        Photo by{" "}
+                        {JSON.stringify(sessionStorage.getItem("username"))}
+                      </p>
+                    ) : (
+                      <p>Login to see author</p>
+                    )}
                 </div>
                 <dl className="dl-info">
                   <div className="views">
@@ -191,7 +169,7 @@ export default function ProductDetailsItem({
               <dl className="dl-info">
                 <div className="views">
                   <i className="fas fa-eye info-p"> Views</i>
-                  <p className="info-p-count">{}</p>
+                  <p className="info-p-count">{ }</p>
                 </div>
                 <div className="downloads">
                   <i className="fas fa-long-arrow-alt-down info-p">

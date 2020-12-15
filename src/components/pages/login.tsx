@@ -5,7 +5,7 @@ import { Link, useHistory } from "react-router-dom";
 import validator from "validator";
 import { User } from "../../modules/user";
 import { Logged } from "../reducers/LoggedReducer";
-import "./login.css";
+import classes from "./login.module.css";
 
 interface Props {
   initUser: User[];
@@ -97,19 +97,19 @@ export default function Login(props: Props): ReactElement {
 
   return (
     <div ref={headRef}>
-      <div className="sidenav">
-        <div className="login-main-text">
+      <div className={classes.sidenav}>
+        <div className={classes.login_main_text}>
           <h2>
             Application
             <br /> Login Page{" "}
           </h2>
         </div>
       </div>
-      <div className="main">
+      <div className={classes.main}>
         <div className="col-md-6 col-sm-12">
-          <div className="login-form">
+          <div className={classes.login_form}>
             <form onSubmit={(e) => e.preventDefault()} noValidate>
-              <div className="form-group">
+              <div className={classes.form_group}>
                 <label htmlFor="email">Email</label>
                 <input
                   type="email"
@@ -119,12 +119,12 @@ export default function Login(props: Props): ReactElement {
                   ref={emailRef}
                   required
                 />
-                <span className="error">
+                <span className={classes.error}>
                   <p>
                     {error === "empty_email" ? "Email can't be empty" : null}
                   </p>
                 </span>
-                <span className="error">
+                <span className={classes.error}>
                   <p>
                     {error === "incorrect_email"
                       ? "Email must contain @ like example@example.com"
@@ -137,37 +137,37 @@ export default function Login(props: Props): ReactElement {
                 <input
                   type="text"
                   placeholder="Password"
-                  className="form-control"
+                  className={classes.form_control}
                   onChange={(e) => setPassword(e.target.value)}
                   required
                 />
-                <span className="error">
+                <span className={classes.error}>
                   <p>
                     {error === "empty_password"
                       ? "Password can't be empty"
                       : null}
                   </p>
                 </span>
-                <span className="error">
+                <span className={classes.error}>
                   <p>
                     {error === "incorrect_password"
                       ? "Password must contain more than 6 symbols"
                       : null}
                   </p>
                 </span>
-                <span className="success">
+                <span className={classes.success}>
                   <p>
                     {error === "success"
                       ? "You are successfully Logged In, go to "
                       : null}
                     {error === "success" ? (
                       <Link to={"/"}>
-                        <span className="success"> Home page</span>
+                        <span className={classes.success}> Home page</span>
                       </Link>
                     ) : null}
                   </p>
                 </span>
-                <span className="notfound">
+                <span className={classes.notfound}>
                   <p>
                     {error === "not_found"
                       ? "Your email or password is incorrect. Please try again "
@@ -175,11 +175,11 @@ export default function Login(props: Props): ReactElement {
                   </p>
                 </span>
               </div>
-              <button type="submit" className="btn-black" onClick={onSubmit}>
+              <button type="submit" className={classes.btn_black} onClick={onSubmit}>
                 Login
               </button>
               <Link to={"/"}>
-                <button className="btn-secondary">Cancel</button>
+                <button className={classes.btn_secondary}>Cancel</button>
               </Link>
               <br />
               <br />
@@ -187,7 +187,7 @@ export default function Login(props: Props): ReactElement {
               <br />
               <Link to={"/sign-up"}>
                 <div>
-                  <button className="btn-black">Sign Up</button>
+                  <button className={classes.btn_black}>Sign Up</button>
                 </div>
               </Link>
             </form>

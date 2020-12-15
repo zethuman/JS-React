@@ -1,0 +1,112 @@
+body {
+    font-family: "Lato", sans-serif;
+}
+
+.id{
+    color: #fff;
+}
+
+
+.main_head{
+    height: 150px;
+    background: #FFF;
+   
+}
+
+.sidenav { 
+    height: 100%;
+    background-color: rgb(27, 26, 26);
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.error p{
+    color: red;
+    font-size: 13px;
+}
+
+
+.success p{
+    color: rgba(0, 128, 0, 0.808);
+    font-size: 13px;
+}
+
+.success{
+    color: rgba(0, 128, 0, 0.808);
+    font-size: 14px;
+}
+
+.notfound p{
+    color: red;
+    font-size: 13px;
+}
+
+.notfound{
+    color: red;
+    font-size: 14px;
+}
+/* input[type="email"]:invalid{
+    border-color: red;
+    color: red;
+} */
+
+
+.main {
+    padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+}
+
+@media screen and (max-width: 450px) {
+    .login-form{
+        margin-top: 10%;
+    }
+
+    .register-form{
+        margin-top: 10%;
+    }
+}
+
+@media screen and (min-width: 768px){
+    .main{
+        margin-left: 40%; 
+    }
+
+    .sidenav{
+        width: 40%;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+    }
+
+    .login_form{
+        margin-top: 50%;
+    }
+
+    .register_form{
+        margin-top: 20%;
+    }
+}
+
+
+.login_main_text{
+    margin-top: 20%;
+    padding: 60px;
+    color: #fff;
+}
+
+.login_main_text h2{
+    font-weight: 300;
+}
+
+.btn_black{
+    background-color: rgb(27, 26, 26) !important;
+    color: #fff;
+}
+.btn_secondary{
+    margin-left: 3%;
+}
+

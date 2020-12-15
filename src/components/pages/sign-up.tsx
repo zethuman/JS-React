@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import validator from "validator";
 import axios from "../api/axios";
-import "./login.css";
+import classes from "./login.module.css";
 
 export default function Registration() {
   const [error, setError] = useState("");

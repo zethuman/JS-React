@@ -10,17 +10,18 @@ interface Props {
 }
 
 export default function CardItem({src, text, label}: Props): ReactElement {
-    let skewImage = useRef(null);
+    // let skewImage = useRef(null);
+    // ref={(e: any) => {skewImage = e}}
   
-    useEffect(() => {
-        skewGallery(skewImage)
-    }, []);
+    // useEffect(() => {
+    //     skewGallery(skewImage)
+    // }, []);
     
     return (
             <div className="cards__item" >
                 <div className="cards__item__link">
                     <figure className='cards__item__pic-wrap' data-category={label}>
-                        <img src={src} alt="Travel" className="cards__item__img" ref={(e: any) => {skewImage = e}}/>
+                        <img src={src} alt="Travel" className="cards__item__img" />
                     </figure>
                     <div className="cards__item__info">
                         <h5 className="cards__item__text">{text}</h5>

@@ -16,7 +16,7 @@ export default function ProductItem({src, product_id, text, label, description}:
     return (
         <li className="card" key={product_id}>
             <Link to={`products/${product_id}`}>
-                    <img src={`../../${src}`} alt="Travel"/>
+                    <img src={`${src}`} alt="Travel"/>
                 <div className="content">
                     <span>{label}</span>
                     <h3>

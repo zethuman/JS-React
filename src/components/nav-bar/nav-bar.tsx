@@ -1,6 +1,7 @@
 import gsap from "gsap";
 import React, {
   ReactElement,
+
   useContext,
   useEffect,
   useRef,
@@ -11,13 +12,16 @@ import { Link } from "react-router-dom";
 import axios from "../api/axios";
 import "../app/App.css";
 import { ContextUsername } from "../contexts/context-username";
+import ModalSubmit from "../modals/modal-submit";
 import { Logged } from "../reducers/LoggedReducer";
 import Search from "../search/search";
+import UploadImage from "../upload/upload-image";
 import "./nav-bar.css";
 
 function Navbar(): ReactElement {
   const [products, setProducts] = useState<any[]>([]);
   const [term, setTerm] = useState("");
+  const [isOpenSubmit, setIsOpenSubmit] = useState(false);
 
   const isLogged = useSelector((state: any) => state.logged);
   const username = useContext(ContextUsername);
@@ -89,10 +93,20 @@ function Navbar(): ReactElement {
                 Home
               </Link>
             </li>
-            <li className="nav-item">
-              <Link to="/upload" className="nav-links" onClick={closeMobileMenu}>
-                Upload
-              </Link>
+            <li className="nav-item nav-links" >
+              <button onClick={() => setIsOpenSubmit(true)} className="submit_btn">
+                Submit photo
+              </button>
+              <div style={{ zIndex: 1 }} className="modal">
+                <ModalSubmit open={isOpenSubmit} onClose={() => setIsOpenSubmit(false)}>
+                  <div className="info-intro">
+                    <h2 className="h2-info">Submit to WC</h2>
+                  </div>
+                  <dl className="dl-info">
+                    <UploadImage onClose={() => setIsOpenSubmit(false)} />
+                  </dl>
+                </ModalSubmit>
+              </div>
             </li>
             <li className="nav-item">
               <Link
