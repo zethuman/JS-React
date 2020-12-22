@@ -12,8 +12,6 @@ export default function Registration() {
   const [password, setPassword] = useState("");
   const history = useHistory();
 
-  console.log("Errors: ", error);
-
   const headRef = useRef(null);
   const textRef = useRef(null);
 
@@ -98,7 +96,7 @@ export default function Registration() {
         console.log(resp.data);
         history.push("/login");
       });
-      console.log(result);
+      // console.log(result);
       setError("success");
       sessionStorage.setItem("username", nameValid);
     }
@@ -106,17 +104,17 @@ export default function Registration() {
 
   return (
     <div ref={headRef}>
-      <div className="sidenav">
-        <div className="login-main-text" ref={textRef}>
+      <div className={classes.sidenav}>
+        <div className={classes.login_main_text} ref={textRef}>
           <h2>
             Application
             <br /> Signup Page{" "}
           </h2>
         </div>
       </div>
-      <div className="main">
+      <div className={classes.main}>
         <div className="col-md-6 col-sm-12">
-          <div className="login-form">
+          <div className={classes.login_form}>
             <form onSubmit={(e) => e.preventDefault()}>
               <div className="form-group">
                 <label>Name</label>
@@ -127,7 +125,7 @@ export default function Registration() {
                   ref={inputText}
                   onChange={(e) => setName(e.target.value)}
                 />
-                <span className="error">
+                <span className={classes.error}>
                   <p>{error === "empty_name" ? "Name can't be empty" : null}</p>
                 </span>
               </div>
@@ -144,7 +142,7 @@ export default function Registration() {
                     {error === "empty_email" ? "Email can't be empty" : null}
                   </p>
                 </span>
-                <span className="error">
+                <span className={classes.error}>
                   <p>
                     {error === "incorrect_email"
                       ? "Email must contain @ like example@example.com"
@@ -160,38 +158,38 @@ export default function Registration() {
                   className="form-control"
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                <span className="error">
+                <span className={classes.error}>
                   <p>
                     {error === "empty_password"
                       ? "Password can't be empty"
                       : null}
                   </p>
                 </span>
-                <span className="error">
+                <span className={classes.error}>
                   <p>
                     {error === "incorrect_password"
                       ? "Password must contain more than 6 symbols"
                       : null}
                   </p>
                 </span>
-                <span className="success">
+                <span className={classes.success}>
                   <p>
                     {error === "success"
                       ? "You are successfully Signed Up go to "
                       : null}
                     {error === "success" ? (
                       <Link to={"/login"}>
-                        <span className="success">Login page</span>
+                        <span className={classes.success}>Login page</span>
                       </Link>
                     ) : null}
                   </p>
                 </span>
               </div>
-              <button type="submit" className="btn-black" onClick={onSubmit}>
+              <button type="submit" className={classes.btn_black} onClick={onSubmit}>
                 Sign Up
               </button>
               <Link to={"/"}>
-                <button className="btn-secondary">Cancel</button>
+                <button className={classes.btn_secondary}>Cancel</button>
               </Link>
             </form>
           </div>

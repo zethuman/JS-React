@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import App from './components/app/App';
-import "./components/app/App.css";
+import ErrorBoundary from './components/error-page/ErrorBoundary';
 import allReducers from './components/reducers';
+import './index.css';
 
 const store = createStore(allReducers,
   (window as any).__REDUX_DEVTOOLS_EXTENSION__ &&
@@ -14,7 +15,9 @@ const store = createStore(allReducers,
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <ErrorBoundary>
+        <App />
+      </ErrorBoundary>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

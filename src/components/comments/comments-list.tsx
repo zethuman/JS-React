@@ -3,15 +3,14 @@ import React, {
   useContext,
   useEffect,
   useRef,
-  useState,
+  useState
 } from "react";
-import { v4 as uuid } from "uuid";
 import axios from "../api/axios";
 import { ContextUsername } from "../contexts/context-username";
-import "./comments-list.css";
+import classes from "./comments-list.module.css";
 
 interface Props {
-  product_id: number;
+  id: number;
 }
 
 export default function CommentsList(props: Props): ReactElement {
@@ -20,6 +19,7 @@ export default function CommentsList(props: Props): ReactElement {
   const commentRef = useRef<HTMLTextAreaElement>(null);
   const context = useContext(ContextUsername);
   console.log(context);
+  const isLogged = sessionStorage.getItem('isLogged' || '{}');
 
   useEffect(() => {
     commentRef.current?.focus();
@@ -27,9 +27,8 @@ export default function CommentsList(props: Props): ReactElement {
 
   async function onSubmit() {
     const model = {
-      comment_id: uuid(),
-      product_id: props.product_id,
-      username: context === "{}" ? "Unauthorized user" : context,
+      productId: props.id,
+      username: isLogged === "false" ? "Unauthorized user" : context,
       comment: comments,
     };
     console.log("Model:", model);
@@ -37,26 +36,28 @@ export default function CommentsList(props: Props): ReactElement {
       console.log(resp.data);
     });
     console.log(result);
+    window.location.reload();
   }
+  
 
   return (
     <>
-      <div className="commentform">
+      <div className={classes.commentform}>
         <textarea
           name=""
           id=""
           placeholder="Please enter your comment here."
           ref={commentRef}
           onChange={(e) => setComments(e.target.value)}
-          className="textarea"
+          className={classes.textarea}
         ></textarea>
         <br />
-        <button type="submit" onClick={onSubmit} className="github-btn">
+        <button type="submit" onClick={onSubmit} className={classes.github_btn}>
           {" "}
           Comment{" "}
         </button>
         <hr />
-        <h2>Comments</h2>
+        <h2 className={classes.h2}>Comments</h2>
       </div>
     </>
   );

@@ -1,12 +1,12 @@
 .results_ul{
     position: absolute;
-    left: 210px;
+    left: 180px;
     background-color: white;
     outline-style: none;
     list-style: none;
     margin-top: 20px;
     padding-top: 10px;
-    padding-right: 200px;
+    padding-right: 150px;
     padding-left: 20px;
     padding-bottom: 10px;
     border-radius: 10px;

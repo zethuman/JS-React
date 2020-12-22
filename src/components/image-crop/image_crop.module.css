@@ -1,0 +1,23 @@
+.img{
+    max-width: 400px;
+    max-height: 400px;
+    margin-left: 100px;
+    justify-content: center;
+}
+
+.imgCropped{
+    max-width: 400px;
+    max-height: 400px;
+}
+
+.wrapper_crop{
+    position: absolute;
+    top: 16%;
+    right: 10%;
+}
+
+.btn{
+    position: absolute;
+    bottom: 5%;
+    right: 47%;
+}

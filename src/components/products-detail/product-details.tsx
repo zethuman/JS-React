@@ -1,28 +1,33 @@
 import React, { ReactElement, useEffect, useState } from "react";
 import { useRouteMatch } from "react-router-dom";
+import { v4 as uuid } from "uuid";
 import axios from "../api/axios";
+import classes from '../app/App.module.css';
 import CommentsShow from "../comments-show/comments-show";
 import CommentsList from "../comments/comments-list";
 import ProductDetailsItem from "./product-details-item";
 
-interface Props {
-  fetchUrl: string;
-}
 
-export default function ProductDetails({ fetchUrl }: Props): ReactElement {
+export default function ProductDetails(): ReactElement {
   const [products, setProducts] = useState<any[]>([]);
   const [comments, setComments] = useState<any[]>([]);
-
-  const match = useRouteMatch<{ product_id: string }>();
+  const [error, setError] = useState(false);
+  const match = useRouteMatch<{ id: string }>();
 
   useEffect(() => {
     async function fetchData() {
-      const result = await axios.get(fetchUrl);
+      const result = await axios.get('products');
       setProducts([...result.data]);
+      const check = [...result.data].find((item) => item.id === parseInt(match.params.id))
+      setError(!check)
     }
 
     fetchData();
   }, []);
+
+  if (error) {
+    throw new Error("Test error")
+  }
 
   useEffect(() => {
     async function fetchComment() {
@@ -34,56 +39,59 @@ export default function ProductDetails({ fetchUrl }: Props): ReactElement {
     fetchComment();
   }, []);
 
+
   const filteredElements = products.filter(
-    (item) => item.product_id === parseInt(match.params.product_id) || item.product_id === match.params.product_id
+    (item) => item.id === parseInt(match.params.id)
+
   );
 
+
   const elements = filteredElements.map((item: any) => {
-    const { src, product_id, text, label, description, date } = item;
+    const { src, id, text, description, date, download, user_id } = item;
 
     return (
-      <li key={product_id} className="list-group-item">
+      <li key={id} className="list-group-item">
         <ProductDetailsItem
           src={src}
+          id={id}
           text={text}
-          label={label}
           description={description}
           date={date}
+          products={products}
+          download={download}
+          user_id={user_id}
         />
       </li>
     );
-  });
+  }
+  );
 
-  // const [comments, setComments] = useState(initComments);
 
-  // const onChange = (comment: Comments) => {
-  //   setComments([...comments, comment]);
-  // };
 
   const filteredComments = comments.filter(
-    (item) => item.product_id === parseInt(match.params.product_id)
+    (item) => item.productId === parseInt(match.params.id)
   );
 
   const commentsElements = filteredComments.map((item: any) => {
-    const { username, comment, comment_id } = item;
+    const { username, comment, id } = item;
 
     return (
-      <li key={comment_id} className="list-group-item">
+      <li key={id} className="list-group-item">
         <CommentsShow comments={comment} username={username} />
       </li>
     );
   });
 
   return (
-    <>
-      <div>
-        <h1 className="categories">Products</h1>
+    <React.Fragment key={uuid()}>
+      <div className={classes.categories}>
+        <h1 className={`${classes.h1} ${classes.categories}`}>Products</h1>
       </div>
       <div>{elements}</div>
       <div>
-        <CommentsList product_id={parseInt(match.params.product_id)} />
+        <CommentsList id={parseInt(match.params.id)} />
       </div>
       <div>{commentsElements}</div>
-    </>
+    </React.Fragment>
   );
 }

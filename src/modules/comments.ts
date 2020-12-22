@@ -1,6 +1,5 @@
-export interface Comments{
-    comment_id: string,
-    product_id: number,
+export interface Comments {
+    productId: number,
     username: string,
     comment: string,
 }

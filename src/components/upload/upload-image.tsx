@@ -1,6 +1,5 @@
 import React, { ReactElement, useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
-import { v4 as uuid } from "uuid";
 import validator from 'validator';
 import axios from "../api/axios";
 import firebase from './firebase';
@@ -37,6 +36,7 @@ export default function UploadImage({ onClose }: Props): ReactElement {
     const [isUploaded, setIsUploaded] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [error, setError] = useState("not");
+    const [uploading, setUploading] = useState(false);
 
     const validateName = () => {
         if (validator.isEmpty(text)) {
@@ -108,9 +108,13 @@ export default function UploadImage({ onClose }: Props): ReactElement {
         ", " +
         date.getUTCFullYear();
 
+    function delay(ms: number) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
     async function onFileUpload() {
+        setUploading(true);
         if (validateName() && validateCat() && validateDes()) {
-            setIsUploaded(true)
             let bucketname = 'images';
             let file = selectedFile;
             let storageRef = firebase.storage().ref(`${bucketname}/${selectedFileName}`)
@@ -120,22 +124,29 @@ export default function UploadImage({ onClose }: Props): ReactElement {
                     console.log(url)
                 });
             });
+            await delay(600);
+            setIsUploaded(true)
         }
 
     };
+
+    const user = JSON.parse(sessionStorage.getItem('user') || '{}')
+
 
     async function onSubmit() {
         if (validateName() && validateCat() && validateDes()) {
             setIsSubmitted(true);
             const image = {
                 src: url,
-                product_id: uuid(),
+                user_id: user['id'],
                 text: '' ? setError('empty_name') : text,
                 label: '' ? setError('empty_cat') : label,
-                description: '' ? setError('empty_des') : text,
+                description: '' ? setError('empty_des') : description,
                 category_id: category_id,
+                download: 0,
                 date: newdate
             }
+            console.log("Image modele", image)
 
             const result = await axios.post("products", image).then((resp) => {
                 console.log(resp.data);
@@ -150,15 +161,19 @@ export default function UploadImage({ onClose }: Props): ReactElement {
             case "people":
                 setCategory_id(1);
                 setLabel("people");
+                break;
             case "mountains":
                 setCategory_id(2);
-                setLabel("people");
+                setLabel("mountains");
+                break;
             case "cars":
                 setCategory_id(3);
-                setLabel("people");
+                setLabel("cars");
+                break;
             case "3D":
                 setCategory_id(4);
-                setLabel("people");
+                setLabel("3D");
+                break;
             default:
                 console.log("Error");
         }
@@ -207,7 +222,7 @@ export default function UploadImage({ onClose }: Props): ReactElement {
                             <p>{error === "empty_cat" ? "Choose category please" : null}</p>
                         </span>
                         <br />
-                        {isUploaded === false ? <button className="form-control" onClick={onFileUpload}>Upload</button> : <button className={classes.success}><i className="fas fa-check"></i> Uploaded</button>}
+                        {isUploaded === false ? (uploading === false ? <button className={`form-control`} onClick={onFileUpload} > Upload</button> : <div className={classes.loader}>Loading...</div>) : <button className={classes.success}><i className="fas fa-check"></i> Uploaded</button>}
                     </div>
                 </div>
             </div>

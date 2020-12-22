@@ -28,296 +28,369 @@
   "products": [
     {
       "id": 1,
+      "user_id": 1,
       "src": "../../images/img-6.jpg",
-      "product_id": 1,
       "text": "Crosswalk",
       "label": "people",
       "description": "Double Crosswalk",
       "category_id": 1,
-      "date": "December, 27 2020"
+      "date": "December, 27 2020",
+      "download": 6,
+      "views": 195
     },
     {
+      "id": 2,
+      "user_id": 8,
       "src": "../../images/img-7.jpg",
-      "product_id": 2,
       "text": "Sunset",
       "label": "people",
       "description": "Purple sunset",
       "category_id": 1,
-      "date": "December, 27 2020"
+      "date": "December, 27 2020",
+      "download": 3,
+      "views": 38
     },
     {
+      "id": 3,
       "src": "../../images/img-8.jpg",
-      "product_id": 3,
+      "user_id": 11,
       "text": "Caravan",
       "label": "people",
       "description": "Desert caravan",
       "category_id": 1,
-      "date": "December, 27 2020"
+      "date": "December, 27 2020",
+      "download": 1,
+      "views": 31
     },
     {
+      "id": 4,
       "src": "../../images/img-9.jpg",
-      "product_id": 4,
+      "user_id": 9,
       "text": "Waterfall",
       "label": "people",
       "description": "Waterfall in a jungle",
       "category_id": 1,
-      "date": "December, 27 2020"
+      "date": "December, 27 2020",
+      "download": 0,
+      "views": 13
     },
     {
+      "id": 5,
       "src": "../../images/img-13.jpg",
-      "product_id": 5,
+      "user_id": 1,
       "text": "Village",
       "label": "people",
       "description": "Village on the mountains",
       "category_id": 1,
-      "date": "December, 27 2020"
+      "date": "December, 27 2020",
+      "download": 0,
+      "views": null
     },
     {
+      "id": 6,
       "src": "../../images/img-1.jpg",
-      "product_id": 6,
+      "user_id": 1,
       "text": "Sunset",
       "label": "mountains",
       "description": "Sunset over the mountains",
       "category_id": 2,
-      "date": "December, 27 2020"
+      "date": "December, 27 2020",
+      "download": 0,
+      "views": 2
     },
     {
+      "id": 7,
       "src": "../../images/img-11.jpg",
-      "product_id": 7,
+      "user_id": 1,
       "text": "Flowers",
       "label": "mountain",
       "description": "Mountain covered by flowers",
       "category_id": 2,
-      "date": "December, 27 2020"
+      "date": "December, 27 2020",
+      "download": 11,
+      "views": 2
     },
     {
+      "id": 8,
       "src": "../../images/img-12.jpg",
-      "product_id": 8,
+      "user_id": 1,
       "text": "Beach",
       "label": "mountain",
       "description": "Mountain beach",
       "category_id": 2,
-      "date": "December, 27 2020"
+      "date": "December, 27 2020",
+      "download": 0,
+      "views": null
     },
     {
+      "id": 9,
       "src": "../../images/img-18.jpg",
-      "product_id": 9,
+      "user_id": 1,
       "text": "Flowers",
       "label": "mountain",
       "description": "Mountain flowers",
       "category_id": 2,
-      "date": "December, 27 2020"
+      "date": "December, 27 2020",
+      "download": 0
     },
     {
+      "id": 10,
       "src": "../../images/img-22.jpg",
-      "product_id": 10,
+      "user_id": 1,
       "text": "Sanctuary",
       "label": "mountain",
       "description": "Mountain sanctuary",
       "category_id": 2,
-      "date": "December, 27 2020"
+      "date": "December, 27 2020",
+      "download": 0
     },
     {
+      "id": 11,
       "src": "../../images/img-5.jpg",
-      "product_id": 11,
+      "user_id": 1,
       "text": "Hotel",
       "label": "cars",
       "description": "Hotel car",
       "category_id": 3,
-      "date": "December, 27 2020"
+      "date": "December, 27 2020",
+      "download": 0
     },
     {
+      "id": 12,
       "src": "../../images/img-16.jpg",
-      "product_id": 12,
+      "user_id": 1,
       "text": "BMW",
       "label": "cars",
       "description": "BMW Squats M850i",
       "category_id": 3,
-      "date": "December, 27 2020"
+      "date": "December, 27 2020",
+      "download": 0
     },
     {
+      "id": 13,
       "src": "../../images/img-17.jpg",
-      "product_id": 13,
+      "user_id": 1,
       "text": "Vintage",
       "label": "cars",
       "description": "Vintage retro summer aesthetic",
       "category_id": 3,
-      "date": "December, 27 2020"
+      "date": "December, 27 2020",
+      "download": 0
     },
     {
-      "src": "../../images/img-19.jpg",
-      "product_id": 14,
-      "text": "Lamborghini",
-      "label": "cars",
-      "description": "HURACAN EVO RWD",
-      "category_id": 3,
-      "date": "December, 27 2020"
-    },
-    {
+      "id": 14,
       "src": "../../images/img-20.jpg",
-      "product_id": 15,
+      "user_id": 1,
       "text": "Mushroom",
       "label": "3D",
       "description": "Terminator from Super Mario",
       "category_id": 4,
-      "date": "December, 27 2020"
+      "date": "December, 27 2020",
+      "download": 0,
+      "views": 44
     },
     {
+      "id": 15,
       "src": "../../images/img-21.jpg",
-      "product_id": 16,
+      "user_id": 1,
       "text": "Cube",
       "label": "3D",
       "description": "Cube of cubes",
       "category_id": 4,
-      "date": "December, 27 2020"
+      "date": "December, 27 2020",
+      "download": 0
     },
     {
+      "id": 16,
       "src": "../../images/img-25.jpg",
-      "product_id": 17,
+      "user_id": 1,
       "text": "Paradise",
       "label": "people",
       "description": "Vacances paradisiaque a Bali",
       "category_id": 1,
-      "date": "December, 27 2020"
+      "date": "December, 27 2020",
+      "download": 0,
+      "views": null
     },
     {
+      "id": 17,
       "src": "../../images/img-26.jpg",
-      "product_id": 18,
+      "user_id": 1,
       "text": "Pool",
       "label": "people",
       "description": "Edgeless Pool",
       "category_id": 1,
-      "date": "December, 27 2020"
+      "date": "December, 27 2020",
+      "download": 0
     },
     {
+      "id": 18,
       "src": "https://firebasestorage.googleapis.com/v0/b/project-ws-d1676.appspot.com/o/images%2F1601132010098e086d8fd83ecd2f95c37873c2c6a3273074x872720.jpg?alt=media&token=f8da7f1b-ef78-4ef7-88b2-4ca234f67133",
-      "product_id": "bc123e9c-1fe2-48f5-aecc-d35f623aefe5",
+      "user_id": 1,
       "text": "Davinci",
       "label": "people",
       "description": "Leonardo Davincy",
       "category_id": 4,
       "date": "November 14, 2020",
-      "id": 6
+      "download": 0,
+      "views": 1
     },
     {
+      "id": 19,
       "src": "https://firebasestorage.googleapis.com/v0/b/project-ws-d1676.appspot.com/o/images%2F1461681687137516268-1080x675.jpg?alt=media&token=3bb9600b-3966-4278-9b05-6c1b95df6b7d",
-      "product_id": "3823f62f-3d7e-4f7e-8f7a-dc8ac8abcb66",
+      "user_id": 1,
       "text": "Castle",
       "label": "people",
       "description": "Castle on the hill",
       "category_id": 4,
       "date": "November 14, 2020",
-      "id": 7
+      "download": 0,
+      "views": null
     },
     {
-      "src": "https://firebasestorage.googleapis.com/v0/b/project-ws-d1676.appspot.com/o/images%2F110310276_3289343204513101_5171165232193289956_n.jpg?alt=media&token=341a9f2b-d244-40cc-9d2e-f5088ba4ae98",
-      "product_id": "7bd98b7a-8d9d-4af7-a9b7-adb248a85dc0",
-      "text": "Avatar",
+      "id": 22,
+      "src": "https://firebasestorage.googleapis.com/v0/b/project-ws-d1676.appspot.com/o/images%2Fsnejnie-gori-1920x1080-snejnie-gori-16144.jpg?alt=media&token=abd2bb27-a707-46f6-a6e7-db539922df43",
+      "user_id": 1,
+      "text": "Mountains",
       "label": "people",
-      "description": "Avatar",
+      "description": "Mountains",
       "category_id": 4,
       "date": "November 15, 2020",
-      "id": 8
+      "download": 0
+    },
+    {
+      "src": "https://firebasestorage.googleapis.com/v0/b/project-ws-d1676.appspot.com/o/images%2Fphoto_2019-10-14_14-05-12.jpg?alt=media&token=aaeb98be-6c8b-427b-acd5-c607dacb1a6d",
+      "user_id": 10,
+      "text": "Almaty",
+      "label": "people",
+      "description": "Almaty",
+      "category_id": 4,
+      "date": "November 17, 2020",
+      "id": 23,
+      "download": 0,
+      "views": 2
+    },
+    {
+      "id": 24,
+      "user_id": 1,
+      "src": "../../images/img-19.jpg",
+      "text": "Lamborghini",
+      "label": "cars",
+      "description": "HURACAN EVO RWD",
+      "category_id": 3,
+      "date": "December, 27 2020",
+      "download": 0,
+      "views": 42
+    },
+    {
+      "src": "https://firebasestorage.googleapis.com/v0/b/project-ws-d1676.appspot.com/o/images%2F0i2k33t9mkfr.jpg?alt=media&token=18af4ec6-197f-4eb2-8a70-8bdeda137e27",
+      "user_id": 1,
+      "text": "Acer",
+      "label": "mountains",
+      "description": "Acer vx15",
+      "category_id": 2,
+      "download": 0,
+      "date": "November 21, 2020",
+      "id": 25,
+      "views": null
+    },
+    {
+      "src": "https://firebasestorage.googleapis.com/v0/b/project-ws-d1676.appspot.com/o/images%2Fphoto_2019-10-14_14-05-12.jpg?alt=media&token=099988da-61a3-4ccf-8419-871ab408927b",
+      "user_id": 1,
+      "text": "Almaty",
+      "label": "mountains",
+      "description": "Almaty",
+      "category_id": 2,
+      "download": 0,
+      "date": "November 22, 2020",
+      "id": 26,
+      "views": 2
     }
   ],
   "comments": [
     {
-      "comment_id": "1",
-      "product_id": 1,
+      "productId": 1,
       "username": "Admin",
       "comment": "admin admined this site",
       "id": 1
     },
     {
-      "comment_id": "6a7ef2d5-4c94-494a-90f7-92088ebbf02f",
-      "product_id": 1,
+      "productId": 1,
       "username": "Rakhat",
       "comment": "nkl.ksdc",
       "id": 2
     },
     {
-      "comment_id": "69f02d30-7904-4ec6-a032-b6938d403e82",
-      "product_id": 3,
+      "productId": 3,
       "username": "Unauthorized user",
       "comment": "scsdcsdc",
       "id": 6
     },
     {
-      "comment_id": "17827026-e14a-43e7-b045-1a79f784c9ab",
-      "product_id": 1,
+      "productId": 1,
       "username": "Unauthorized user",
       "comment": "asdasd",
       "id": 7
     },
     {
-      "comment_id": "e94b4e02-ed09-42c6-9361-2cd5c08b8af7",
-      "product_id": 1,
+      "productId": 1,
       "username": "Unauthorized user",
       "comment": "asdasd",
       "id": 8
     },
     {
-      "comment_id": "f0f53bdd-5f16-4d68-b9d7-53f5d72e263b",
-      "product_id": 8,
+      "productId": 8,
       "username": "Unauthorized user",
       "comment": "Lol kek\n",
       "id": 9
     },
     {
-      "comment_id": "c36b1964-44f2-46e2-9252-cd008ba0e456",
-      "product_id": 2,
+      "productId": 2,
       "username": "Unauthorized user",
       "comment": "Lol kek",
       "id": 10
     },
     {
-      "comment_id": "5bc283b7-aaa9-4704-a53b-fdf1c015db52",
-      "product_id": 2,
+      "productId": 2,
       "username": "Rakhat",
       "comment": "Lol kek",
       "id": 11
     },
     {
-      "comment_id": "d7afa133-938e-4434-9c65-12f8ba23efc9",
-      "product_id": 6,
+      "productId": 6,
       "username": "Rakhay",
       "comment": "cdscsd",
       "id": 12
     },
     {
-      "comment_id": "ff423972-655a-4180-8e79-6faf3a99d9e0",
-      "product_id": 10,
+      "productId": 10,
       "username": "Admin",
       "comment": "comment",
       "id": 13
     },
     {
-      "comment_id": "674b34e6-196c-47aa-9153-ce90d6f1d80b",
-      "product_id": 4,
+      "productId": 4,
       "username": "Admin",
       "comment": "comment",
       "id": 14
     },
     {
-      "comment_id": "60ebcb57-7104-495a-9701-5472f8a30268",
-      "product_id": 4,
+      "productId": 4,
       "username": "{}",
       "comment": "comment2",
       "id": 15
     },
     {
-      "comment_id": "e9d635e3-226f-4dd7-bb32-63d831bbcbb6",
-      "product_id": 4,
-      "username": "{}",
-      "comment": "comment3",
-      "id": 16
-    },
-    {
-      "comment_id": "08511f08-0460-4932-bf90-89dcf9b7df20",
-      "product_id": 4,
+      "productId": 4,
       "username": "Unauthorized user",
       "comment": "comment4",
       "id": 17
+    },
+    {
+      "productId": 3,
+      "username": "Admin",
+      "comment": "17:38",
+      "id": 18
     }
   ],
   "users": [
@@ -350,7 +423,7 @@
       "isLogged": false
     },
     {
-      "name": "Rakhay",
+      "name": "Rakhat",
       "email": "r@gmail.com",
       "password": "lolkek",
       "id": 10,
@@ -362,6 +435,26 @@
       "password": "123456",
       "id": 11,
       "isLogged": false
+    },
+    {
+      "name": "Example",
+      "email": "example@gmail.com",
+      "password": "example",
+      "id": 12
+    }
+  ],
+  "like": [
+    {
+      "id": 1,
+      "productId": 1,
+      "userId": 1,
+      "liked": false
+    },
+    {
+      "productId": 2,
+      "userId": 1,
+      "liked": true,
+      "id": 2
     }
   ]
 }

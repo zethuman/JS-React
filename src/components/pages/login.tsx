@@ -1,5 +1,5 @@
 import gsap from "gsap";
-import React, { ReactElement, useEffect, useRef, useState } from "react";
+import React, { ReactElement, useCallback, useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import validator from "validator";
@@ -11,6 +11,8 @@ interface Props {
   initUser: User[];
   onUserChange: (newUser: User) => void;
 }
+
+
 
 export default function Login(props: Props): ReactElement {
   const [error, setError] = useState("");
@@ -45,7 +47,7 @@ export default function Login(props: Props): ReactElement {
     props.onUserChange(newUser);
   };
 
-  const validatePassword = (pass: string) => {
+  const validatePassword = useCallback((pass: string) => {
     if (validator.isEmpty(pass)) {
       setError("empty_password");
       return false;
@@ -57,9 +59,10 @@ export default function Login(props: Props): ReactElement {
         return false;
       }
     }
-  };
+  }, [password]
+  );
 
-  const validateEmail = (email: string) => {
+  const validateEmail = useCallback((email: string) => {
     if (validator.isEmpty(email)) {
       setError("empty_email");
       return false;
@@ -68,7 +71,8 @@ export default function Login(props: Props): ReactElement {
     } else {
       return true;
     }
-  };
+  }, [email]
+  );
 
   const onSubmit = (event: any) => {
     event.preventDefault();
@@ -85,8 +89,7 @@ export default function Login(props: Props): ReactElement {
         history.push("/");
         console.log("Logged in");
         handleUserChange(user);
-        dispatch({ type: Logged.SIGN_IN });
-        sessionStorage.setItem("username", user.name);
+        dispatch({ type: Logged.SIGN_IN, payload: { user } });
         setError("success");
         return true;
       } else {
@@ -109,7 +112,7 @@ export default function Login(props: Props): ReactElement {
         <div className="col-md-6 col-sm-12">
           <div className={classes.login_form}>
             <form onSubmit={(e) => e.preventDefault()} noValidate>
-              <div className={classes.form_group}>
+              <div className="form-group">
                 <label htmlFor="email">Email</label>
                 <input
                   type="email"
@@ -137,7 +140,7 @@ export default function Login(props: Props): ReactElement {
                 <input
                   type="text"
                   placeholder="Password"
-                  className={classes.form_control}
+                  className="form-control"
                   onChange={(e) => setPassword(e.target.value)}
                   required
                 />

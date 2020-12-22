@@ -2,7 +2,8 @@ import { gsap } from "gsap";
 import React, { ReactElement, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "../api/axios";
-import "../app/App.css";
+import styles from "../app/App.module.css";
+import classes from '../cards/cards.module.css';
 
 interface Props {
   fetchUrl: string;
@@ -50,32 +51,32 @@ export default function Categories({ fetchUrl }: Props): ReactElement {
   return (
     <>
       <div>
-        <h1 className="categories" ref={headRef}>
+        <h1 className={`${styles.h1} ${styles.categories}`} ref={headRef}>
           Categories
         </h1>
       </div>
-      <div className="cards">
-        <div className="cards__container">
-          <div className="cards__wrapper">
-            <ul className="cards__items">
+      <div className={classes.cards}>
+        <div className={classes.cards__container}>
+          <div className={classes.cards__wrapper}>
+            <ul className={classes.cards__items}>
               {categories.map((category) => (
-                <li key={category.category_id} className="cards__item">
+                <li key={category.category_id} className={classes.cards__item}>
                   <Link
                     to={`categories/${category.category_id}`}
-                    className="cards__item__link"
+                    className={classes.cards__item__link}
                   >
                     <figure
-                      className="cards__item__pic-wrap"
+                      className={classes.cards__item__pic_wrap}
                       data-category={category.label}
                     >
                       <img
                         src={`../${category.src}`}
                         alt="Travel"
-                        className="cards__item__img"
+                        className={classes.cards__item__img}
                       />
                     </figure>
-                    <div className="cards__item__info">
-                      <h5 className="cards__item__text">{category.text}</h5>
+                    <div className={classes.cards__item__info}>
+                      <h5 className={classes.cards__item__text}>{category.text}</h5>
                     </div>
                   </Link>
                 </li>

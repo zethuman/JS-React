@@ -1,6 +1,6 @@
 import React, { ReactElement, ReactNode } from 'react';
 import { createPortal } from 'react-dom';
-import './modal.css';
+import classes from './modal.module.css';
 
 interface Props {
     open: boolean,
@@ -14,11 +14,11 @@ export default function ModalInfo({open, onClose, children}: Props): ReactElemen
 
     return createPortal(
         <>
-            <div className="overlay">
-                <div className="form">
+            <div className={classes.overlay}>
+                <div className={classes.form}>
                     {children}
                 </div>
-               <i className="fas fa-times x" onClick={onClose}></i>
+               <i className={`fas fa-times ${classes.x}`} onClick={onClose}></i>
             </div>       
         </>,
         document.getElementById('portal-info') as Element

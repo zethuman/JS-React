@@ -1,6 +1,6 @@
 import React, { ReactElement, ReactNode } from 'react';
 import { createPortal } from 'react-dom';
-import './modal.css';
+import classes from './modal.module.css';
 
 interface Props {
     open: boolean,
@@ -14,11 +14,11 @@ export default function ModalSubmit({ open, onClose, children }: Props): ReactEl
 
     return createPortal(
         <>
-            <div className="overlay_submit">
-                <div className="form_submit">
+            <div className={classes.overlay_submit}>
+                <div className={classes.form_submit}>
                     {children}
                 </div>
-                <i className="fas fa-times x" onClick={onClose}></i>
+                <i className={`fas fa-times ${classes.x}`} onClick={onClose}></i>
             </div>
         </>,
         document.getElementById('portal-submit') as Element

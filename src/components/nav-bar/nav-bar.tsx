@@ -1,31 +1,34 @@
 import gsap from "gsap";
 import React, {
   ReactElement,
-
   useContext,
   useEffect,
+  useMemo,
   useRef,
   useState
 } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import axios from "../api/axios";
-import "../app/App.css";
 import { ContextUsername } from "../contexts/context-username";
+import Dropdown from "../dropdown/dropdown";
+import ModalLogin from "../modals/modal-login";
 import ModalSubmit from "../modals/modal-submit";
-import { Logged } from "../reducers/LoggedReducer";
 import Search from "../search/search";
 import UploadImage from "../upload/upload-image";
-import "./nav-bar.css";
+import classes from './nav-bar.module.css';
+
 
 function Navbar(): ReactElement {
   const [products, setProducts] = useState<any[]>([]);
   const [term, setTerm] = useState("");
+  const [search, setSearch] = useState('');
   const [isOpenSubmit, setIsOpenSubmit] = useState(false);
+  const [isOpenProfile, setIsOpenProfile] = useState(false);
+  const [isOpenLogin, setIsOpenLogin] = useState(false);
 
-  const isLogged = useSelector((state: any) => state.logged);
+  // const isLogged = useSelector((state: any) => state.logged);
+  const isLogged = sessionStorage.getItem('isLogged' || '{}');
   const username = useContext(ContextUsername);
-  const dispatch = useDispatch();
 
   const headRef = useRef(null);
 
@@ -39,15 +42,6 @@ function Navbar(): ReactElement {
     fetchData();
   }, []);
 
-  const results = products
-    .filter((val) => {
-      if (val.text.toLowerCase().includes(term.toLowerCase())) {
-        return val.text;
-      }
-    })
-    .map((val, key) => {
-      return val.text;
-    });
 
   useEffect(() => {
     gsap.from(headRef.current, {
@@ -61,89 +55,113 @@ function Navbar(): ReactElement {
   const [click, setClick] = useState(false);
 
   const handleClick = () => setClick(!click);
-  const handleLogOut = () => {
-    dispatch({ type: Logged.SIGN_OUT });
-    console.log("logout");
-  };
   const closeMobileMenu = () => setClick(false);
+  const handleClickSubmitLogin = () => {
+    setIsOpenSubmit(true);
+    setIsOpenLogin(true)
+  }
+
+  const memoSearch = useMemo(() => {
+    return <Search products={products} term={term} ></Search>
+  }, [search]
+  )
 
   return (
     <>
-      <nav className="navbar">
-        <div className="navbar-container" ref={headRef}>
-          <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
+      <nav className={classes.navbar}>
+        <div className={classes.navbar_container} ref={headRef}>
+          <Link to="/" className={classes.navbar_logo} onClick={closeMobileMenu}>
             WC
-            <i className="fab fa-typo3 logo_icon" />
+              <i className={`fab fa-typo3 ${classes.logo_icon} ${classes.fa_typo3}`} />
           </Link>
-          <div className="menu-icon" onClick={handleClick}>
-            <i className={click ? "fas fa-times" : "fas fa-bars"} />
+          <div className={classes.menu_icon} onClick={handleClick}>
+            <i className={click ? `${classes.fa_times} fas fa-times` : `${classes.fa_bars} fas fa-bars`} />
           </div>
-          <div className="search_bar">
+          <div className={classes.search_bar}>
             <input
-              className="search_input"
+              className={classes.search_input}
               type="lol"
               placeholder="Search..."
               onChange={(e) => setTerm(e.target.value)}
+              onKeyUp={(e) => { if (e.key === 'Enter') { setSearch(term) } }}
             />
           </div>
 
-          <ul className={click ? "nav-menu active" : "nav-menu"}>
-            <li className="nav-item">
-              <Link to="/" className="nav-links" onClick={closeMobileMenu}>
+          <ul className={click ? `${classes.nav_menu} ${classes.active}` : classes.nav_menu}>
+            <li className={classes.nav_item}>
+              <Link to="/" className={classes.nav_links} onClick={closeMobileMenu}>
                 Home
               </Link>
             </li>
-            <li className="nav-item nav-links" >
-              <button onClick={() => setIsOpenSubmit(true)} className="submit_btn">
+            <li className={`${classes.nav_item} ${classes.nav_links}`} >
+              <button onClick={() => handleClickSubmitLogin()} className={classes.submit_btn}>
                 Submit photo
               </button>
-              <div style={{ zIndex: 1 }} className="modal">
-                <ModalSubmit open={isOpenSubmit} onClose={() => setIsOpenSubmit(false)}>
-                  <div className="info-intro">
-                    <h2 className="h2-info">Submit to WC</h2>
-                  </div>
-                  <dl className="dl-info">
-                    <UploadImage onClose={() => setIsOpenSubmit(false)} />
-                  </dl>
-                </ModalSubmit>
+              <div style={{ zIndex: 1 }} className={classes.modal}>
+                {isLogged === "true" ?
+                  <ModalSubmit open={isOpenSubmit} onClose={() => setIsOpenSubmit(false)}>
+                    <div className={classes.info_intro}>
+                      <h2 className={classes.h2_info}> Submit to WC</h2>
+                    </div>
+                    <dl className={classes.dl_info}>
+                      <UploadImage onClose={() => setIsOpenSubmit(false)} />
+                    </dl>
+                  </ModalSubmit > :
+                  <ModalLogin open={isOpenLogin} onClose={() => setIsOpenLogin(false)}>
+                    <dl className={classes.dl_info}>
+                      <div className={classes.login_modal}>
+                        <span className={`${classes.span_modal} ${classes.text}`}>Please,</span>
+                        <Link to="/login" className={classes.text_link} onClick={() => setIsOpenLogin(false)}>
+                          Log in
+                        </Link>
+                        <span className={`${classes.span_modal} ${classes.text}`}>first to submit</span>
+                      </div>
+                    </dl>
+                  </ModalLogin>
+                }
               </div>
             </li>
-            <li className="nav-item">
+            <li className={classes.nav_item}>
               <Link
                 to="/categories"
-                className="nav-links"
+                className={classes.nav_links}
                 onClick={closeMobileMenu}
               >
                 Categories
               </Link>
             </li>
-            <li className="nav-item">
+            <li className={classes.nav_item}>
               <Link
                 to="/products"
-                className="nav-links"
+                className={classes.nav_links}
                 onClick={closeMobileMenu}
               >
                 Products
               </Link>
             </li>
-            {isLogged === true ? (
-              <li className="nav-item log1" ref={headRef}>
-                <Link to="/" className="nav-links" onClick={handleLogOut}>
-                  <i className="fas fa-user log1"></i>
-                  <br />
-                  <h5 className="name log1" ref={headRef}>
+            <li className={classes.nav_item}>
+              <Link
+                to="/popular"
+                className={classes.nav_links}
+                onClick={closeMobileMenu}
+              >
+                Popular
+              </Link>
+            </li>
+            {isLogged === 'true' ? (
+              <li className={`${classes.nav_item} ${classes.log1}`} ref={headRef} onClick={() => setIsOpenProfile(!isOpenProfile)}>
+                <i className={`fas fa-user ${classes.nav_links}`}>
+                  <h5 className={classes.name} ref={headRef}>
                     {username}
                   </h5>
-                  <h5 className="name log2" ref={headRef}>
-                    Log Out
-                  </h5>
-                </Link>
+                </i>
+                {isOpenProfile && (<Dropdown />)}
               </li>
             ) : (
-                <li className="nav-item">
+                <li className={classes.nav_item}>
                   <Link
                     to="/login"
-                    className="nav-links"
+                    className={classes.nav_links}
                     onClick={closeMobileMenu}
                   >
                     Log in
@@ -152,7 +170,8 @@ function Navbar(): ReactElement {
               )}
           </ul>
         </div>
-        <div><Search products={products} term={term} /></div>
+        {/* <div><Search products={products} term={term} /></div> */}
+        <div>{memoSearch}</div>
       </nav>
     </>
   );

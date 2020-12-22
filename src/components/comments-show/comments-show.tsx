@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
 // import { ContextUsername } from "../contexts/context-username";
-import "./comments-show.css";
+import classes from "./comments-show.module.css";
 
 interface Props {
   comments: string;
@@ -13,8 +13,8 @@ export default function CommentsShow({comments, username}: Props): ReactElement 
   return (
     <>
       <hr />
-      <div className="comments">
-        <span className="little">{username}</span>
+      <div className={classes.comments}>
+        <span className={classes.little}> {username} </span>
         <p>{comments}</p>
       </div>
     </>

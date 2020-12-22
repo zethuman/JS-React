@@ -1,16 +1,16 @@
 import { gsap } from 'gsap';
-import React, { ReactElement, useEffect, useRef, useState } from 'react';
-import { v4 as uuid } from 'uuid';
-import '../../components/cards/cards.css';
-import ProductItem from '../product-item/product-item';
+import React, { lazy, ReactElement, Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import axios from '../api/axios';
+import classes from "../app/App.module.css";
+import styles from '../product-item/product-item.module.css';
 
+const ProductItem = lazy(() => import('../product-item/product-item'));
 
-interface Props{
+interface Props {
     fetchUrl: string;
 }
 
-export default function Products({fetchUrl}: Props): ReactElement {
+export default function Products({ fetchUrl }: Props): ReactElement {
 
     const headRef = useRef(null);
     const textRef = useRef(null);
@@ -20,41 +20,48 @@ export default function Products({fetchUrl}: Props): ReactElement {
         async function fetchData() {
             const result = await axios.get(fetchUrl);
             console.log(result.data);
-            setProducts([ ...result.data])
+            setProducts([...result.data])
         }
 
         fetchData();
     }, []);
 
     useEffect(() => {
-        gsap.from(headRef.current, {duration: 2, ease: "bounce.out", y: -154, stagger: {
-            amount: 0.15
-        }})
+        gsap.from(headRef.current, {
+            duration: 2, ease: "bounce.out", y: -154, stagger: {
+                amount: 0.15
+            }
+        })
     }, [headRef])
 
     useEffect(() => {
-        gsap.from(textRef.current, {duration: 1, autoAlpha:0, ease: "power3.out", y: -64, stagger: {
-            amount: 0.15
-        }})
+        gsap.from(textRef.current, {
+            duration: 1, autoAlpha: 0, ease: "power3.out", y: -64, stagger: {
+                amount: 0.15
+            }
+        })
     }, [textRef])
 
 
 
-    const elements = products.map((item: any) => {
-      
-        const { src, product_id,  text,  label, description, category_id } = item;
-        
-          return ( 
-             <ProductItem key={uuid()}  src={src} product_id={product_id} text = {text} label={label} description={description} category_id={category_id}  />);
-      })
+    const elements = useMemo(() => products.map((item: any) => {
 
-      return (
+        const { src, id, text, label, description } = item;
+
+        return (
+            <ProductItem key={id} src={src} id={id} text={text} label={label} description={description} />);
+    }), [products]
+    );
+
+    return (
         <>
-            <div ref={headRef}>
-                <h1  className="products">Products</h1>
+            <div className={classes.products}>
+                <h1 className={classes.h1} ref={headRef}>Products</h1>
             </div>
-            <div id="product">
-                {elements}
+            <div id={styles.product}>
+                <Suspense fallback={<h1>Loading products...</h1>}>
+                    {elements}
+                </Suspense>
             </div>
         </>
     )

@@ -1,29 +1,30 @@
-import React, { ReactElement} from 'react';
+import React, { ReactElement } from 'react';
 import { Link } from 'react-router-dom';
-import './categories-detail.css';
+// import classes from '../cards/cards.module.css';
+import classes from './categories-detail.module.css';
 
 
 interface Props {
     src: string,
-    product_id: number,
+    id: number,
     text: string,
     label: string,
     description: string,
     category_id: number,
 }
 
-export default function CategoriesDetailItem({src, product_id, text, label, description}: Props): ReactElement {
+export default function CategoriesDetailItem({ src, id, text, label, description }: Props): ReactElement {
 
 
     return (
-        <li className="card">
-            <Link to={`products/${product_id}`}>
-                    <img src={`../${src}`} alt="Travel"/>
+        <li className={classes.card} key={id}>
+            <Link to={`products/${id}`} >
+                <img src={`${src}`} alt="Travel" />
             </Link>
-            <div className="content">
+            <div className={classes.content}>
                 <span>{label}</span>
                 <h3>
-                    <Link to={`products/${product_id}`}>{text}</Link>
+                    <Link to={`products/${id}`}>{text}</Link>
                 </h3>
                 <p>{description}</p>
             </div>
